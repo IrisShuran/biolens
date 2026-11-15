@@ -1,0 +1,253 @@
+/* 内页组件统一：把各课程页自带的圆角卡片、彩色胶囊收成 D 版的直角 + hairline。
+   在 visual-refresh.css 之后引入；只改外观，不动结构与脚本。 */
+
+/* ---------- 1. 圆角：8–22px 的胶囊与卡片统一收到 4px ---------- */
+:is(.membrane-back, .membrane-badge, .membrane-stage, .membrane-stage-top button,
+    .membrane-directory-list button, .membrane-detail, .membrane-misconception,
+    .membrane-question, .membrane-limits, #membraneQuestionChoices button,
+    .membrane-option-key, #membraneQuestionRetry,
+    .mitosis-back, .mitosis-badge, .mitosis-stage-btn, .mitosis-stage, .mitosis-explain,
+    .mitosis-quiz, .mitosis-choices label, .mitosis-controls button, .mitosis-option-key,
+    .mito-badge, .mito-primary, .mito-part-group button, .mito-question, .mito-limits,
+    #mitoQuestionChoices button, #mitoQuestionRetry,
+    .atp-badge, .atp-primary, .atp-workspace, .atp-stage, .atp-controls button,
+    .atp-steps button, .atp-bottom > section, #atpPredictChoices button,
+    #atpPredictSubmit, #atpPredictRetry,
+    .passive-button, .passive-badge, .passive-model-card, .passive-choice, .passive-guide,
+    .passive-summary, .passive-limits, .passive-segmented button, .passive-presets button,
+    .cell-primary, .cell-badge,
+    .bio-related a, .bio-related, .bio-trail-next) {
+  border-radius: 4px;
+}
+
+/* ---------- 2. 结构目录里的彩色小圆片：改成细线 + 小方点 ---------- */
+:is(.membrane-directory-list button, .mito-part-group button, .mitosis-stage-btn,
+    .passive-presets button, .passive-segmented button, .atp-steps button) {
+  background: #fff;
+  border: 1px solid var(--d-line);
+  color: var(--d-ink-2);
+  font-weight: 500;
+}
+:is(.membrane-directory-list button, .mito-part-group button, .passive-presets button)::before {
+  border-radius: 2px;
+}
+
+/* ---------- 3. 徽标与大号标签：白色小方块，不再用彩色胶囊 ---------- */
+:is(.membrane-badge, .mitosis-badge, .mito-badge, .atp-badge, .passive-badge, .cell-badge) {
+  background: #fff;
+  border: 1px solid var(--d-line);
+  color: var(--d-muted);
+  font-family: var(--d-mono);
+  font-size: 10.5px;
+  letter-spacing: .04em;
+  padding: 7px 10px;
+}
+
+/* ---------- 4. 返回 / 下一步 / 主按钮：黑底或细线，两种就够 ---------- */
+:is(.membrane-back, .mitosis-back) {
+  background: #fff;
+  border: 1px solid var(--d-line);
+  color: var(--d-ink-2);
+  font-weight: 500;
+}
+.bio-trail-next {
+  background: none !important;
+  color: var(--d-ink) !important;
+  border: 1px solid var(--d-line);
+  font-weight: 500;
+  text-decoration: none;
+}
+:is(.cell-primary, .mito-primary, .atp-primary, #mitosisQuizSubmit, .passive-button,
+    .membrane-stage-top button, .mito-stage-top button, .mitosis-controls button,
+    .atp-controls button) {
+  background: var(--d-ink);
+  border: 1px solid var(--d-ink);
+  color: #fff;
+  font-weight: 600;
+  font-size: 13.5px;
+  box-shadow: none;
+}
+:is(.cell-primary, .mito-primary, .atp-primary, #mitosisQuizSubmit, .passive-button):hover {
+  background: #000;
+}
+
+/* ---------- 5. 白色卡片：去掉描边圆角过渡，改成一条顶线 ---------- */
+:is(.membrane-detail, .membrane-question, .membrane-limits, .mitosis-explain,
+    .mitosis-quiz, .mito-question, .mito-limits, .passive-model-card, .passive-limits,
+    .atp-bottom > section) {
+  background: #fff;
+  border: 1px solid var(--d-line-2);
+}
+
+/* ---------- 6. 底部两张“继续探索”卡：细线行，右侧不再高亮 ---------- */
+.bio-related { gap: 0; margin: clamp(28px, 3vw, 40px) 0; border-top: 1px solid var(--d-line); }
+.bio-related a,
+.bio-related a:last-child,
+.bio-related.is-dark a,
+.bio-related.is-dark a:last-child {
+  min-height: 0;
+  padding: 20px 0;
+  border: 0;
+  border-bottom: 1px solid var(--d-line-2);
+  background: none;
+  color: var(--d-ink);
+}
+.bio-related a:last-child,
+.bio-related.is-dark a:last-child { border-bottom-color: var(--d-line); }
+.bio-related a:hover { border-bottom-color: var(--d-ink); }
+.bio-related span,
+.bio-related.is-dark span {
+  color: var(--d-faint);
+  font-family: var(--d-mono);
+  font-size: 10.5px;
+  font-weight: 400;
+  letter-spacing: .12em;
+}
+.bio-related strong { font-size: 16px; font-weight: 600; }
+
+/* ---------- 7. 深色舞台：直角、去掉大投影 ---------- */
+:is(.membrane-stage, .mitosis-stage, .mito-workspace, .atp-workspace, .cell-stage) {
+  box-shadow: none;
+}
+
+/* ---------- 8. 课程地图：压掉 visual-system.css 里的深色渐变卡与悬停浮起 ---------- */
+.routes article, .topics article, .connections article {
+  background: none !important;
+  border: 0 !important;
+  border-top: 1px solid var(--d-line-2) !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  transform: none !important;
+}
+.routes article:first-child, .topics article:nth-child(1),
+.topics article:nth-child(4) { border-top-color: var(--d-line) !important; }
+.routes article > span, .topics .eyebrow { color: var(--d-faint) !important; }
+.routes p, .topics p, .connections p, .intro > p:not(.eyebrow) { color: var(--d-ink-2) !important; }
+.routes article::after, .topics article::after, .connections article::after { display: none !important; }
+.routes article:hover, .topics article:hover, .connections article:hover {
+  transform: none !important;
+  box-shadow: none !important;
+  background: none !important;
+}
+.connections article:last-child { border-bottom: 1px solid var(--d-line-2) !important; }
+.intro h1 { text-wrap: balance; }
+/* ---------- 9. 深色舞台内部的按钮：黑底在黑底上会消失，改成浅描边 ---------- */
+.membrane-stage-top button, .mito-stage-top button, .atp-stage-top button,
+.mitosis-controls button, .atp-controls button {
+  background: rgba(255, 255, 255, .04) !important;
+  border: 1px solid rgba(255, 255, 255, .32) !important;
+  color: #EDF2EF !important;
+  box-shadow: none !important;
+}
+.membrane-stage-top button:hover, .mito-stage-top button:hover, .atp-stage-top button:hover,
+.mitosis-controls button:hover, .atp-controls button:hover { border-color: #fff !important; }
+/* ---------- 10. 被动运输页：主按钮与次按钮分开，隐藏的帮助按钮不要漏出来 ---------- */
+.passive-button {
+  background: #fff !important;
+  border: 1px solid var(--d-line) !important;
+  color: var(--d-ink) !important;
+  font-weight: 500 !important;
+}
+.passive-button-primary,
+#passivePredictSubmit {
+  background: var(--d-ink) !important;
+  border-color: var(--d-ink) !important;
+  color: #fff !important;
+  font-weight: 600 !important;
+}
+.bio-shell-actions button[hidden] { display: none !important; }
+/* ---------- 11. 选项与阶段条：描边统一到 hairline，选中用墨色而不是薄荷 ---------- */
+:is(#membraneQuestionChoices button, #mitoQuestionChoices button, #atpPredictChoices button,
+    .mitosis-choices label, .cell-quiz label, .passive-choice) {
+  border-color: var(--d-line) !important;
+  background: #fff !important;
+}
+:is(.mitosis-stage-btn, .atp-steps button)[aria-pressed="true"],
+.atp-steps button[aria-current="step"] {
+  border-color: var(--d-ink) !important;
+  color: var(--d-ink) !important;
+  background: #fff !important;
+}
+:is(.mitosis-stage-btn, .atp-steps button) .mitosis-stage-num,
+.passive-step-num { color: var(--d-ink); }
+/* ---------- 12. 首页里的 DNA 复制单元：环节条、主按钮、示意图容器 ---------- */
+.course-path button { border-radius: 4px; border-color: var(--d-line); color: var(--d-ink-2); }
+.course-path button[aria-current="step"] { background: var(--d-ink); border-color: var(--d-ink); color: #fff; }
+.course-path button[aria-current="step"] span { color: rgba(255, 255, 255, .6); }
+.course-context button, .course-actions button, .nucleotide-choices button, .finish-tabs button {
+  border-radius: 4px; border-color: var(--d-line); color: var(--d-ink-2);
+}
+.course-primary, #courseContent .course-primary {
+  background: var(--d-ink); border: 1px solid var(--d-ink); border-radius: 4px; font-weight: 600;
+}
+#courseContent { border-radius: 4px; border-color: var(--d-line-2); padding: clamp(18px, 2vw, 26px); }
+.sequence-surface { border-radius: 4px; background: #0E1211; }
+.base { border-radius: 2px; }
+.reaction-box { border-radius: 4px; }
+.bond-detail { border-radius: 4px; }
+.lesson-tag, .cell-badge, .mito-badge, .atp-badge {
+  background: #fff; border: 1px solid var(--d-line); color: var(--d-muted);
+  border-radius: 4px; font-family: var(--d-mono); font-size: 10.5px; letter-spacing: .04em;
+}
+.next, .play { border-radius: 4px; }
+
+/* ---------- 13. 结构查看器：独立小页面，浅底 + 细线按钮，画布区保持深色 ---------- */
+.sv-page {
+  margin: 0; background: var(--d-bg); color: var(--d-ink);
+  font: 14px/1.7 -apple-system, "Segoe UI", "Microsoft YaHei", system-ui, sans-serif;
+}
+.sv-page .structure-bar { padding: 18px clamp(16px, 3vw, 32px); border-bottom: 1px solid var(--d-line); }
+.sv-page button { background: #fff; border: 1px solid var(--d-line); color: var(--d-ink); border-radius: 4px; }
+.sv-page button[aria-pressed="true"] { background: var(--d-ink); border-color: var(--d-ink); color: #fff; }
+.sv-page #structureCaption { color: var(--d-ink-2); padding: 14px clamp(16px, 3vw, 32px); }
+.sv-page .structure-foot { color: var(--d-faint); padding: 12px clamp(16px, 3vw, 32px); border-top: 1px solid var(--d-line-2); }
+.sv-page a { color: var(--d-ink); }
+.sv-page .structure-visually-hidden{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.sv-page button:focus-visible, .sv-page a:focus-visible, .sv-page input:focus-visible { outline: 2px solid var(--d-ink); outline-offset: 3px; }
+button { border-radius: 4px; }
+.eq, .structure-monospace { font-family: var(--d-mono); }
+/* ---------- 14. 细胞世界（首页内嵌）：按钮与图鉴统一，压过基础样式 ---------- */
+.cell-primary, #nucleusDNA, #mitoEnter, #cellTourPlay {
+  background: var(--d-ink) !important;
+  border: 1px solid var(--d-ink) !important;
+  color: #fff !important;
+  border-radius: 4px !important;
+  font-weight: 600 !important;
+  box-shadow: none !important;
+}
+.cell-badge, .mito-badge {
+  background: #fff !important;
+  border: 1px solid var(--d-line) !important;
+  color: var(--d-muted) !important;
+  border-radius: 4px !important;
+  font-family: var(--d-mono) !important;
+  font-size: 10.5px !important;
+  letter-spacing: .04em !important;
+}
+#organelleDirectory button, .cell-directory button, .cell-tour-steps button,
+#mitoPartList button, .mito-part-group button {
+  background: #fff !important;
+  border: 1px solid var(--d-line) !important;
+  color: var(--d-ink-2) !important;
+  border-radius: 4px !important;
+  font-weight: 500 !important;
+}
+#organelleDirectory button[aria-pressed="true"], .cell-tour-steps button[aria-pressed="true"],
+#mitoPartList button[aria-pressed="true"] {
+  border-color: var(--d-ink) !important;
+  color: var(--d-ink) !important;
+  font-weight: 600 !important;
+}
+.cell-stage, .mito-stage, .cell-detail, .mito-detail, .cell-journey, .cell-compare,
+.cell-quiz, .mito-question, .mito-limits { border-radius: 4px !important; box-shadow: none !important; }
+.cell-stage, .mito-stage { background: #0E1211 !important; }
+
+/* Keep the 3D stage tied to its own content instead of stretching an empty
+   dark block to the height of the longer explanation column. */
+@media(min-width:981px){
+  .mito-stage{align-self:start}
+  #mitoViewport{height:clamp(470px,43vw,610px)}
+}
+@media(max-width:700px){
+  .atp-stage{margin:0}
+}
