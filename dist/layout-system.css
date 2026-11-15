@@ -1,0 +1,49 @@
+:root{--bio-reading-width:66ch;--bio-layout-gap:clamp(18px,2vw,26px)}
+
+/* Lesson pages: let the model and the explanation share the first view. */
+#passiveMain,#membraneMain,#mitosisMain{max-width:1320px;padding-top:clamp(24px,3vw,38px)}
+.passive-heading,.membrane-heading,.mitosis-heading{align-items:end;gap:20px;margin-bottom:24px}
+.passive-heading>div,.membrane-heading>div,.mitosis-heading>div{min-width:0}
+.passive-heading h1,.membrane-heading h1,.mitosis-heading h1{font-size:clamp(30px,3.1vw,42px);line-height:1.24;letter-spacing:-.025em;margin:9px 0 10px;max-width:24ch;text-wrap:balance}
+.passive-heading h1{max-width:none}
+.passive-heading p:not(.passive-eyebrow),.membrane-heading p,.mitosis-heading p{max-width:var(--bio-reading-width);line-height:1.7}
+.passive-badge,.membrane-badge,.mitosis-badge{flex:none;align-self:center}
+.passive-layout,.membrane-layout,.mitosis-layout,.membrane-bottom{gap:var(--bio-layout-gap)}
+.passive-model-card,.membrane-stage,.mitosis-stage{box-shadow:0 16px 36px rgba(15,47,58,.1)}
+.passive-guide,.membrane-detail,.mitosis-explain,.passive-stats,.membrane-question,.membrane-limits,.mitosis-quiz{border-color:#d1e1e3;box-shadow:0 9px 26px rgba(20,57,65,.045)}
+.passive-guide,.membrane-detail,.mitosis-explain{padding:clamp(22px,2.3vw,30px)}
+.passive-guide h2,.membrane-detail h2,.mitosis-explain h2{line-height:1.34;letter-spacing:-.02em;text-wrap:balance}
+.passive-guide-kicker{margin-bottom:18px;padding-bottom:13px}
+.passive-guide p,.membrane-detail-body p,.mitosis-stage-text{line-height:1.72}
+.membrane-detail-body h3,.mitosis-legend h3{color:#286c6c;font-weight:750;letter-spacing:.02em}
+.membrane-detail-body h3{margin-top:20px;margin-bottom:6px}
+.membrane-detail-body p,.mitosis-stage-text,.mitosis-stage-note,.passive-guide p{max-width:var(--bio-reading-width)}
+.passive-choice,.mitosis-choices label,#membraneQuestionChoices button{border-radius:11px;line-height:1.5}
+.passive-choice{margin-block:8px;padding:12px}
+.mitosis-choices label,#membraneQuestionChoices button{padding:13px 15px}
+.passive-scenario,.mitosis-stage-note,.membrane-misconception{border-radius:11px}
+
+@media(min-width:1100px){.passive-layout,.mitosis-layout{grid-template-columns:minmax(0,1.65fr) minmax(390px,1fr)}.membrane-layout{grid-template-columns:minmax(0,1.65fr) minmax(390px,1fr)}}
+@media(min-width:900px) and (max-width:1099px){.passive-layout,.mitosis-layout{grid-template-columns:minmax(0,1.4fr) minmax(330px,1fr)}.membrane-layout{grid-template-columns:minmax(0,1.4fr) minmax(330px,1fr)}}
+
+/* First-visit guide: short route beside the invitation, with the experiment closer. */
+.learning-welcome{display:grid;grid-template-columns:minmax(260px,.85fr) minmax(0,1.5fr);align-items:start;column-gap:clamp(20px,3vw,42px);padding:18px clamp(22px,2.5vw,32px);margin-block:14px}
+.learning-welcome>.passive-eyebrow,.learning-welcome>h2,.learning-welcome>.learning-actions,.learning-welcome>.passive-small{grid-column:1}
+.learning-welcome h2{font-size:clamp(22px,2.1vw,26px);line-height:1.32;margin:5px 0 10px;text-wrap:balance}
+.learning-welcome ol{grid-column:2;grid-row:1 / span 4;display:grid;grid-template-columns:1fr;gap:7px;list-style:none;counter-reset:welcome;padding:0;margin:0}
+.learning-welcome li{display:grid;grid-template-columns:27px minmax(0,1fr);gap:0 10px;counter-increment:welcome;min-width:0}
+.learning-welcome li::before{content:counter(welcome,decimal-leading-zero);grid-column:1;grid-row:1 / span 2;width:27px;height:27px;display:grid;place-items:center;border-radius:50%;background:#e5f6f0;color:#126a5b;font-size:11px;font-weight:800}
+.learning-welcome li strong,.learning-welcome li span{grid-column:2;line-height:1.5}
+.learning-welcome li span{margin-top:2px}
+.learning-welcome .learning-actions{margin:7px 0 0}
+.learning-welcome>.passive-small{margin-top:6px!important}
+
+/* Course map: one readable idea per card. */
+.intro>p:not(.eyebrow),.routes article p,.topics article p,.connections article p{max-width:var(--bio-reading-width)}
+.routes article,.topics article,.connections article{padding:clamp(24px,2.4vw,32px)}
+.routes article h3,.topics article h3{max-width:24ch;text-wrap:balance}
+.connections article h3{margin-bottom:10px}
+.connections article p+p{margin-top:10px}
+
+@media(max-width:899px){.passive-heading,.membrane-heading,.mitosis-heading{align-items:flex-start}.passive-badge,.membrane-badge,.mitosis-badge{align-self:flex-start}.learning-welcome{grid-template-columns:1fr}.learning-welcome ol{grid-column:1;grid-row:auto;grid-template-columns:repeat(3,minmax(0,1fr));margin:15px 0}.learning-welcome>.learning-actions,.learning-welcome>.passive-small{grid-column:1}}
+@media(max-width:650px){.learning-welcome ol{grid-template-columns:1fr;gap:12px}.learning-welcome{padding:20px}.passive-guide,.membrane-detail,.mitosis-explain{padding:20px}.passive-heading h1,.membrane-heading h1,.mitosis-heading h1{font-size:clamp(26px,7vw,33px)}.routes article,.topics article,.connections article{padding:22px}}

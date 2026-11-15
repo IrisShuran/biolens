@@ -1,0 +1,3 @@
+html::before{content:"";position:fixed;inset:0;z-index:9998;pointer-events:none;background:#102b36;opacity:0;transition:opacity .2s ease-in-out}
+html.bio-leaving::before,html.bio-arriving::before{opacity:1}
+@media(prefers-reduced-motion:reduce){html::before{display:none}}

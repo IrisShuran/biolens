@@ -1,0 +1,122 @@
+/* ATP 合成互动课程 · 独立样式（atp 前缀，避免与 cell.css、dna-course.css、mito.css 冲突） */
+
+/* 内膜与嵴详解里的入口按钮：只有选中内膜与嵴时显示，隐藏时不改变原有布局。 */
+#atpEnter{margin-top:12px}
+#atpEnter:not([hidden])+#mitoBack{margin-top:12px}
+
+#atpMain{max-width:1480px;padding-top:30px}
+.atp-heading{display:flex;justify-content:space-between;gap:20px;align-items:center;margin-bottom:26px}
+.atp-heading p{color:#627d8d;max-width:760px}
+.atp-badge{font-size:13px;padding:9px 13px;border:1px solid #cddce5;border-radius:22px;white-space:nowrap}
+.atp-workspace{display:grid;grid-template-columns:minmax(0,1fr) 330px;overflow:hidden;border-radius:20px;border:1px solid #d4e2e8;background:#fff}
+.atp-stage{background:#0a1c26;min-width:0;color:#c8dfec}
+.atp-stage-top{display:flex;justify-content:space-between;align-items:center;padding:18px 23px;font-size:12px;letter-spacing:2px}
+.atp-stage-top button{border:1px solid #4d687a;background:#203f51;color:#d3e7ef;border-radius:8px;font-size:13px;padding:9px 13px;cursor:pointer;letter-spacing:0}
+#atpViewport{position:relative;height:470px;overflow:hidden}
+#atpCanvas{width:100%;height:100%;display:block;touch-action:none;cursor:grab}
+.atp-view-hint{position:absolute;left:23px;top:0;color:#a2bece;font-size:12px;pointer-events:none}
+.atp-scene-tag{position:absolute;right:18px;top:14px;font-size:12px;color:#ffd7a8;background:#3a2c1a;border:1px solid #6d5636;border-radius:6px;padding:5px 9px;pointer-events:none;max-width:70%;line-height:1.6}
+#atpLoading{position:absolute;top:42%;left:10%;right:10%;text-align:center;padding:14px;background:#173546;border-radius:9px;line-height:1.8}
+#atpDegraded{position:absolute;inset:auto 10% 12% 10%;text-align:center;padding:14px;background:#3a2c1a;border:1px solid #6d5636;border-radius:9px;line-height:1.8;color:#ffd7a8}
+.atp-controls{display:flex;align-items:center;flex-wrap:wrap;gap:10px;padding:13px 23px;border-top:1px solid #284858;font-size:13px}
+.atp-controls button{border:1px solid #4d687a;background:#203f51;color:#d3e7ef;border-radius:8px;font-size:13px;padding:9px 14px;cursor:pointer}
+.atp-controls button:disabled{opacity:.45;cursor:default}
+.atp-controls #atpPlay{background:#0b705e;border-color:#0b705e;color:#fff;min-width:74px}
+.atp-controls>span{margin-left:auto;color:#ffcf94}
+.atp-steps{display:flex;flex-wrap:wrap;gap:9px;list-style:none;margin:0;padding:4px 23px 12px}
+.atp-steps button{display:flex;align-items:center;gap:9px;border:1px solid #34576b;background:#132c3b;color:#bcd6e4;border-radius:9px;padding:9px 13px;font-size:13px;cursor:pointer;text-align:left}
+.atp-steps button[aria-current=true]{border-color:#ffc07a;background:#3a2c1a;color:#ffe0b8}
+.atp-step-no{display:inline-flex;align-items:center;justify-content:center;width:20px;height:20px;border-radius:50%;background:#26506a;color:#dceaf3;font-size:12px}
+.atp-steps button[aria-current=true] .atp-step-no{background:#a86b1c;color:#fff}
+.atp-step-title{color:#8fb0c2;font-size:12px}
+.atp-play-hint{font-size:12px;color:#8fb0c2;margin:0;padding:0 23px 12px;line-height:1.7}
+.atp-lock-note{font-size:13px;color:#ffd7ae;margin:0;padding:0 23px 12px;line-height:1.7}
+.atp-lock-note:focus{outline:none}
+.atp-steps button.is-locked{border-style:dashed;color:#93a9b6}
+.atp-step-lock{font-size:11px;color:#ffb066;border:1px solid #7a4a1d;background:#3a2a17;border-radius:6px;padding:1px 6px}
+.atp-model-note{font-size:12px;line-height:1.8;color:#91adbf;margin:0;padding:0 23px 18px}
+.atp-detail{padding:25px;display:flex;flex-direction:column}
+.atp-detail h2{font-size:24px;margin:10px 0 12px;line-height:1.45}
+.atp-detail h3{font-size:13px;color:#59818e;margin:16px 0 6px}
+#atpStepLead{font-size:14px;line-height:1.9;color:#3f5f70;margin:0}
+#atpStepPoints{margin:0;padding-left:19px}
+#atpStepPoints li{font-size:14px;line-height:1.85;color:#466577;margin-bottom:8px}
+.atp-legend{margin-top:20px;border-top:1px solid #e2ecf1;padding-top:14px}
+.atp-legend h3{margin-top:0}
+.atp-legend ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:9px}
+.atp-legend li{display:flex;align-items:center;gap:9px}
+.atp-legend-mark{flex:0 0 40px;height:40px;display:block}
+.atp-legend-mark canvas{display:block}
+.atp-legend-text{display:flex;flex-direction:column;line-height:1.5}
+.atp-legend-text strong{font-size:13px;color:#2f5364}
+.atp-legend-text span{font-size:12px;color:#6d8695}
+.atp-primary{border:0;border-radius:8px;background:#0b705e;color:#fff;padding:12px 16px;font-size:14px;cursor:pointer;margin-top:20px}
+.atp-bottom{display:grid;grid-template-columns:1fr 1fr;gap:26px;margin-top:30px}
+.atp-bottom>section{border:1px solid #d4e2e9;padding:25px;border-radius:16px;background:#fff;min-width:0}
+.atp-bottom h2{font-size:21px;margin:8px 0 14px}
+#atpPredictPrompt{font-size:18px;line-height:1.7;margin:0 0 16px}
+#atpPredictChoices{display:flex;flex-direction:column;gap:10px}
+#atpPredictChoices button{display:block;width:100%;text-align:left;line-height:1.8;border:1px solid #c3d8e0;border-radius:8px;background:#fff;color:#345e70;padding:11px 13px;font-size:14px;cursor:pointer}
+#atpPredictChoices button.picked{border-color:#c98a34;background:#fdf1e2}
+#atpPredictChoices button.correct{border-color:#42a489;background:#e5f5ee}
+#atpPredictChoices button.wrong{border-color:#ce9b8b;background:#fff1eb}
+#atpPredictChoices button:disabled{cursor:default}
+#atpPredictSubmit{margin-top:14px;border:0;border-radius:8px;background:#0b705e;color:#fff;padding:11px 16px;font-size:14px;cursor:pointer}
+#atpPredictSubmit:disabled{background:#b9cdd6;cursor:default}
+#atpPredictRetry{margin-top:12px;border:1px solid #c3d8e0;border-radius:8px;background:#fff;color:#345e70;padding:10px 12px;font-size:14px;cursor:pointer}
+.atp-feedback{margin-top:14px;font-size:14px;line-height:1.8;color:#147762}
+.atp-feedback.is-wrong{color:#a4442a}
+.atp-feedback.is-correct{color:#147762}
+.atp-compare-row{display:grid;grid-template-columns:1.1fr 1fr 1fr;gap:10px;align-items:center;padding:11px 0;border-bottom:1px solid #eaf1f5}
+.atp-compare-row:last-of-type{border-bottom:0}
+.atp-compare-name{font-size:13px;color:#2f5364}
+.atp-compare-cell{display:flex;flex-direction:column;gap:6px}
+.atp-compare-word{font-size:13px;color:#466577}
+.atp-bar{display:block;height:9px;border-radius:5px;background:#e6eef3;position:relative;overflow:hidden}
+.atp-bar:after{content:'';position:absolute;inset:0 auto 0 0;width:calc(var(--atp-level) * 100%);border-radius:5px}
+.atp-bar-normal:after{background:#2f9e7f}
+.atp-bar-leak:after{background:#d98324}
+.atp-compare-head{display:grid;grid-template-columns:1.1fr 1fr 1fr;gap:10px;font-size:12px;color:#6d8695;margin-bottom:4px}
+#atpCompareLabel{display:inline-block;font-size:12px;color:#8a5a15;background:#fdf3e7;border:1px solid #e8cfa8;border-radius:14px;padding:3px 10px;margin-bottom:12px}
+#atpCompareCaveat{font-size:12px;color:#718995;line-height:1.8;margin-top:14px}
+.atp-limits ul{margin:14px 0;padding-left:20px}
+.atp-limits li{font-size:14px;line-height:1.85;color:#557383;margin-bottom:9px}
+.atp-footer{margin-top:30px}
+.atp-footer a{color:#52788c}
+#atpMain button:focus-visible,#atpMain a:focus-visible{outline:3px solid #b5761f;outline-offset:3px}
+#atpCanvas:focus-visible{outline:3px solid #ffc07a;outline-offset:-3px}
+
+@media(max-width:1050px){
+  .atp-workspace{grid-template-columns:minmax(0,1fr) 300px}
+  .atp-detail{padding:20px}
+}
+
+@media(max-width:780px){
+  .atp-badge{display:none}
+  .atp-heading h1{font-size:26px}
+  .atp-heading p{font-size:14px}
+  .atp-workspace{grid-template-columns:1fr}
+  /* 窄屏把示意图铺满可用宽度：画布越宽，图内标注越大。
+     配合 atp.js 的紧凑模式（文字与符号按 2 倍逻辑尺寸绘制）保证默认可读。 */
+  .atp-stage{margin:0 -15px;border-radius:0}
+  #atpViewport{height:400px}
+  .atp-bottom{grid-template-columns:1fr;gap:16px}
+  .atp-controls{padding:12px 15px;gap:8px}
+  .atp-controls>span{margin-left:0;width:100%}
+  .atp-steps{padding:4px 15px 10px;gap:7px}
+  .atp-play-hint{padding:0 15px 10px}
+  .atp-model-note{padding:0 15px 16px}
+  .atp-stage-top{padding:16px 15px}
+  .atp-view-hint{left:15px}
+  .atp-scene-tag{right:12px;top:10px;font-size:11px;max-width:58%}
+  .atp-lock-note{padding:0 15px 12px}
+  .atp-bottom>section{padding:22px 16px}
+  .atp-compare-row,.atp-compare-head{grid-template-columns:1fr;gap:4px}
+  .atp-compare-row{padding:14px 0}
+  .atp-compare-head{display:none}
+}
+
+@media(max-width:400px){
+  .atp-stage-top span{letter-spacing:1px}
+  #atpViewport{height:380px}
+}

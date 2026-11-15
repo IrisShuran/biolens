@@ -1,0 +1,34 @@
+{
+  "version": 1,
+  "title": "细胞膜：边界由什么组成？",
+  "subtitle": "选择一种结构，观察它在哪里，再解释它怎样参与构成细胞边界。",
+  "context": "典型动物细胞质膜 · 局部教学示意",
+  "sides": {"outside": "细胞外侧", "inside": "胞质溶胶侧"},
+  "defaultSelected": "head",
+  "structures": [
+    {"id":"head","name":"亲水头部","en":"Hydrophilic head","color":"#78d6cd","position":"分布在双层的两个表面，分别朝向细胞外液和胞质溶胶。","function":"与水环境接触，是磷脂分子的一部分。","misconception":"头部不只朝向细胞外：双层内侧的头部也接触水环境。"},
+    {"id":"tail","name":"疏水尾部","en":"Hydrophobic tails","color":"#e8c585","position":"位于双层内部，上下两层的尾部相向。","function":"共同构成膜的疏水内部。","misconception":"头部和尾部属于同一个磷脂分子；上下两层的磷脂并未彼此连成一个分子。"},
+    {"id":"transmembrane","name":"跨膜蛋白","en":"Transmembrane protein","color":"#ad9be0","position":"穿过磷脂双层，在膜两侧都有暴露的部分。","function":"不同跨膜蛋白可参与运输、接收信号等不同功能。","misconception":"不是每个跨膜蛋白都是通道；本图不演示运输。"},
+    {"id":"peripheral","name":"外周蛋白","en":"Peripheral protein","color":"#eea788","position":"附着于膜的一侧表面；本图放在胞质溶胶侧。","function":"不同外周蛋白可参与连接、酶促反应或信号过程。","misconception":"外周蛋白不穿过整层膜，名称中的“外周”也不等于只在细胞外侧。"},
+    {"id":"cholesterol","name":"胆固醇","en":"Cholesterol","color":"#edce69","position":"嵌在磷脂分子之间，极性端靠近头部区域。","function":"是动物细胞膜的组成成分，参与调节膜的物理性质。","misconception":"它不是跨膜蛋白；本轮只识别位置，不模拟温度效应。"},
+    {"id":"glycoprotein","name":"糖蛋白","en":"Glycoprotein","color":"#e7a2c9","position":"糖链连接在蛋白上，糖链部分朝向细胞外。","function":"可参与细胞识别与相互作用。","misconception":"本图的糖蛋白也跨膜；“带糖链”和“是否跨膜”是不同分类角度。"},
+    {"id":"glycolipid","name":"糖脂","en":"Glycolipid","color":"#92c788","position":"糖链连接在脂质上，糖链部分朝向细胞外。","function":"参与形成细胞表面的识别特征。","misconception":"与糖蛋白的区别是糖链连接的对象不同，不是糖链朝向不同。"}
+  ],
+  "question": {
+    "prompt": "哪项描述符合这张动物细胞质膜示意图？",
+    "options": [
+      {"id":"a","text":"两侧亲水头部接触水环境，疏水尾部朝向双层内部。","correct":true,"feedback":"正确。磷脂的两部分性质不同，图中头部朝向两侧水环境，尾部位于双层内部。"},
+      {"id":"b","text":"只有朝向细胞外的那一层含有亲水头部。","correct":false,"feedback":"再观察内侧表面：胞质溶胶也是水环境，内侧那层同样有亲水头部。"},
+      {"id":"c","text":"所有膜蛋白都必须穿过整层膜。","correct":false,"feedback":"外周蛋白附着在膜表面，不穿过整层膜。请对照两类蛋白的位置。"}
+    ],
+    "retryLabel":"重新作答"
+  },
+  "limits": [
+    "本模型是典型动物细胞质膜的局部教学示意，不表示所有细胞膜的组成比例。",
+    "颜色、尺寸、间距、数量和位置经过简化，不是原子结构或真实比例。",
+    "脂质和蛋白被固定以便观察；真实膜具有流动性。本轮不模拟流动、运输或膜形成过程。",
+    "糖链、蛋白与胆固醇使用抽象形状，未展示完整化学结构。"
+  ],
+  "fallback":"此设备无法显示三维模型。仍可使用结构目录、详解和理解题学习。",
+  "sources":[{"title":"OpenStax Biology 2e · 5.1 Components and Structure","url":"https://openstax.org/books/biology-2e/pages/5-1-components-and-structure","checked":"2026-10-20"}]
+}

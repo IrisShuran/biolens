@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>细胞分裂：一份如何变成两份？</title>
+<meta name="description" content="简化动物细胞有丝分裂示意（2n=4）：观察前期、中期、后期、末期与胞质分裂中，复制后的染色体如何分配，使每个子细胞获得完整的染色体组成。">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='12' fill='%23112132'/%3E%3Cpath d='M20 4v16M4 20h16M20 20c4 4 8 8 16 16M20 20c-4 4-8 8-16 16M20 20c4-4 8-8 16-16M20 20c-4-4-8-8-16-16' stroke='%2378d6cd' fill='none' stroke-width='2'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="mitosis.css">
+<link rel="stylesheet" href="site-shell.css?v=20261114b">
+
+<link rel="stylesheet" href="visual-system.css?v=1"><link rel="stylesheet" href="layout-system.css?v=1">
+<link rel="stylesheet" href="site-transition.css?v=2"><script src="site-transition.js?v=2"></script></head>
+<body>
+<header class="bio-shell"><a class="bio-shell-brand" href="./index.html"><span class="bio-shell-mark">B</span><span>BioLens</span><span class="bio-shell-tagline">生物，看得见</span></a><nav class="bio-shell-actions" aria-label="全站导航"><a href="./index.html">学习首页</a><a href="curriculum.html">课程地图</a></nav></header>
+<nav class="bio-trail" aria-label="当前位置"><a href="./index.html#dna">DNA 复制</a><span aria-hidden="true">›</span><strong aria-current="page">细胞分裂</strong></nav>
+
+<main id="mitosisMain">
+  <div class="mitosis-heading">
+    <div>
+      <div class="mitosis-eyebrow">细胞分裂 · 有丝分裂</div>
+      <h1>细胞分裂：一份如何变成两份？</h1>
+      <p>DNA 已在此前的 S 期完成复制；这里观察的是复制后的分配过程。</p>
+    </div>
+    <span class="mitosis-badge">2n=4 · 简化动物细胞</span>
+  </div>
+  <p class="mitosis-constant-note">常驻说明：简化动物细胞，2n=4，仅为教学示例，不代表人类染色体数量。时间、大小与比例均不对应真实测量。</p>
+
+  <nav class="mitosis-stages" aria-label="五个教学阶段">
+    <button type="button" class="mitosis-stage-btn" data-stage="1" aria-pressed="true"><span class="mitosis-stage-num">1</span>前期<span class="mitosis-stage-sub">含前中期</span></button>
+    <button type="button" class="mitosis-stage-btn" data-stage="2" aria-pressed="false"><span class="mitosis-stage-num">2</span>中期</button>
+    <button type="button" class="mitosis-stage-btn" data-stage="3" aria-pressed="false"><span class="mitosis-stage-num">3</span>后期</button>
+    <button type="button" class="mitosis-stage-btn" data-stage="4" aria-pressed="false"><span class="mitosis-stage-num">4</span>末期</button>
+    <button type="button" class="mitosis-stage-btn" data-stage="5" aria-pressed="false"><span class="mitosis-stage-num">5</span>胞质分裂</button>
+  </nav>
+
+  <div class="mitosis-layout">
+    <section class="mitosis-stage" aria-label="细胞分裂 SVG 教学模型">
+      <div class="mitosis-stage-top">
+        <span>CELL DIVISION / 2n=4</span>
+        <span id="mitosisStatus" role="status">第 1 阶段 · 暂停</span>
+      </div>
+      <div class="mitosis-viewport" id="mitosisViewport">
+        <svg id="mitosisSvg" viewBox="155 85 690 480" preserveAspectRatio="xMidYMid meet" role="img" aria-label="动物细胞有丝分裂示意：左右为两极，中间为赤道面。四条复制染色体各含两条姐妹染色单体，先后经历凝缩、排列、分离、成核与胞质分裂。染色体身份（A1/B1/A2/B2 与 a/b）与去向见下方身份台账。"></svg>
+        <noscript>
+          <div class="mitosis-fallback">
+            <p><strong>细胞分裂五个阶段（静态说明）</strong></p>
+            <ol>
+              <li><strong>1 前期（含前中期）</strong>：染色体凝缩，随后核膜解体，纺锤体连接染色体。</li>
+              <li><strong>2 中期</strong>：复制后的染色体逐条排列在赤道面，两姐妹分别连接相反两极。</li>
+              <li><strong>3 后期</strong>：姐妹染色单体分开，成为子染色体并移向两极。</li>
+              <li><strong>4 末期</strong>：两极各形成新的细胞核，染色体开始舒展。</li>
+              <li><strong>5 胞质分裂</strong>：细胞膜向内收缩，最终形成两个子细胞。</li>
+            </ol>
+            <p>此动画示意需要启用 JavaScript 才能播放；上述文字说明始终可读。</p>
+          </div>
+        </noscript>
+      </div>
+      <div class="mitosis-controls" role="group" aria-label="播放控制">
+        <button type="button" id="mitosisPlay" class="mitosis-primary">播放</button>
+        <button type="button" id="mitosisPrev">上一步</button>
+        <button type="button" id="mitosisNext">下一步</button>
+        <button type="button" id="mitosisRestart">重新开始</button>
+      </div>
+      <p class="mitosis-count" id="mitosisCount"></p>
+      <div class="mitosis-ledger" id="mitosisLedger" aria-label="染色体身份与去向（自上而下对应图中位置）"></div>
+    </section>
+
+    <aside class="mitosis-explain" aria-live="polite">
+      <div class="mitosis-eyebrow" id="mitosisStageTag">阶段 1 / 5</div>
+      <h2 id="mitosisStageName">前期（含前中期）</h2>
+      <div class="mitosis-en" id="mitosisStageEn">Prophase · Prometaphase</div>
+      <p class="mitosis-stage-text" id="mitosisStageText">染色质凝缩成可见的染色体；随后核膜逐渐解体，两极分开，纺锤体微管连接到染色体的着丝粒。</p>
+      <p class="mitosis-stage-note" id="mitosisStageNote">本示意将前期与前中期合并展示，方便看到凝缩、核膜解体与连接的先后顺序。</p>
+
+      <div class="mitosis-legend">
+        <h3>图例：颜色之外也看文字</h3>
+        <ul>
+          <li><span class="mitosis-swatch" style="--c:#5ce0bd"></span>A1 长染色体（姐妹同色，标 a / b）</li>
+          <li><span class="mitosis-swatch" style="--c:#74a9e8"></span>A2 长染色体（姐妹同色，标 a / b）</li>
+          <li><span class="mitosis-swatch" style="--c:#ffb37a"></span>B1 短染色体（姐妹同色，标 a / b）</li>
+          <li><span class="mitosis-swatch" style="--c:#ef8fc7"></span>B2 短染色体（姐妹同色，标 a / b）</li>
+        </ul>
+        <p class="mitosis-legend-note">8 条 DNA 拷贝：A1a / A1b / A2a / A2b / B1a / B1b / B2a / B2b。颜色相同的是同一原染色体的两条姐妹染色单体。</p>
+      </div>
+
+      <ol class="mitosis-stage-list" aria-label="五个阶段完整说明">
+        <li><strong>1 前期（含前中期）</strong>：染色体凝缩，随后核膜解体，纺锤体连接染色体。</li>
+        <li><strong>2 中期</strong>：复制后的染色体逐条排列在赤道面，两姐妹分别连接相反两极。</li>
+        <li><strong>3 后期</strong>：姐妹染色单体分开，成为子染色体并移向两极。</li>
+        <li><strong>4 末期</strong>：两极各形成新的细胞核，染色体开始舒展。</li>
+        <li><strong>5 胞质分裂</strong>：细胞膜向内收缩，最终形成两个子细胞。</li>
+      </ol>
+    </aside>
+  </div>
+
+  <section class="mitosis-quiz" aria-labelledby="mitosisQuizPrompt">
+    <div class="mitosis-eyebrow">检查理解 · 染色体分配</div>
+    <h2 id="mitosisQuizPrompt">在这个正常完成分裂的 2n=4 模型中，每个子细胞获得什么？</h2>
+    <fieldset class="mitosis-choices" id="mitosisQuizChoices">
+      <legend class="mitosis-sr">选择一项</legend>
+      <label><input type="radio" name="mitosisAnswer" value="A"><span class="mitosis-option-key">A</span><span>2 条染色体，只有原来的一半类型</span></label>
+      <label><input type="radio" name="mitosisAnswer" value="B"><span class="mitosis-option-key">B</span><span>4 条染色体，A1、A2、B1、B2 各一</span></label>
+      <label><input type="radio" name="mitosisAnswer" value="C"><span class="mitosis-option-key">C</span><span>8 条染色体，仍都是 X 形</span></label>
+      <label><input type="radio" name="mitosisAnswer" value="D"><span class="mitosis-option-key">D</span><span>随机分到若干条</span></label>
+    </fieldset>
+    <button type="button" id="mitosisQuizSubmit">提交</button>
+    <p class="mitosis-quiz-feedback" id="mitosisQuizFeedback" role="status"></p>
+    <button type="button" id="mitosisQuizRetry" hidden>重答</button>
+    <p class="mitosis-quiz-note">动画未完成也可以答题；提交前不显示对错反馈。</p>
+  </section>
+
+  <nav class="bio-related" aria-label="关联课程"><a href="./index.html#dna"><span>回看分裂前的准备</span><strong>DNA 复制：先形成姐妹染色单体</strong></a><a href="curriculum.html#cycle"><span>理解两门课的联系</span><strong>复制在先，分配在后</strong></a></nav>
+  <footer class="mitosis-footer">
+    <p><a href="./index.html">返回学习首页</a> · <a href="curriculum.html">查看课程地图</a></p>
+    <p>学习参考：<a href="https://openstax.org/books/biology-2e/pages/10-2-the-cell-cycle" target="_blank" rel="noopener">OpenStax Biology 2e · 10.2 细胞周期</a>。</p>
+  </footer>
+</main>
+<script src="mitosis.js"></script>
+
+<script src="visual-system.js?v=1"></script>
+</body>
+</html>

@@ -1,0 +1,93 @@
+/* 线粒体结构探索 · 独立样式（mito 前缀，避免与 cell.css、dna-course.css 冲突） */
+
+/* 细胞详解里的入口按钮：只有选中线粒体时显示，隐藏时保持原有 DNA 按钮布局。 */
+#mitoEnter{margin-top:auto}
+#mitoEnter:not([hidden])+#nucleusDNA{margin-top:0}
+
+#mitoMain{max-width:1480px;padding-top:30px}
+.mito-heading{display:flex;justify-content:space-between;gap:20px;align-items:center;margin-bottom:26px}
+.mito-heading p{color:#627d8d;max-width:760px}
+.mito-badge{font-size:13px;padding:9px 13px;border:1px solid #cddce5;border-radius:22px;white-space:nowrap}
+.mito-workspace{display:grid;grid-template-columns:minmax(0,1fr) 330px;overflow:hidden;border-radius:20px;border:1px solid #d4e2e8;background:#fff}
+.mito-stage{background:#101f30;min-width:0;color:#c8dfec}
+.mito-stage-top{display:flex;justify-content:space-between;align-items:center;padding:18px 23px;font-size:12px;letter-spacing:2px}
+.mito-stage-top button{border:1px solid #4d687a;background:#203f51;color:#d3e7ef;border-radius:8px;font-size:13px;padding:9px 13px;cursor:pointer}
+#mitoViewport{position:relative;height:470px;overflow:hidden}
+#mitoCanvas{width:100%;height:100%;display:block;touch-action:none;cursor:grab}
+#mitoLabels{position:absolute;inset:0;pointer-events:none}
+.mito-label{position:absolute;background:#183549ed;color:#d1e5f0;font-size:12px;padding:5px 9px;border:1px solid #638299;border-radius:6px;transform:translate(-50%,-100%);white-space:nowrap}
+.mito-label.selected{color:#fff;border-color:#ffcf94;background:#4a3a24f2}
+.mito-view-hint{position:absolute;left:23px;top:0;color:#a2bece;font-size:12px;pointer-events:none}
+.mito-cut-tag{position:absolute;right:18px;bottom:14px;font-size:12px;color:#ffd7a8;background:#3a2c1a;border:1px solid #6d5636;border-radius:6px;padding:5px 9px;pointer-events:none}
+#mitoLoading{position:absolute;top:42%;left:10%;right:10%;text-align:center;padding:14px;background:#173546;border-radius:9px;line-height:1.8}
+.mito-controls{display:flex;align-items:center;flex-wrap:wrap;gap:17px;padding:13px 23px;border-top:1px solid #284858;font-size:13px}
+.mito-controls input{accent-color:#ffc07a}
+.mito-controls>span{margin-left:auto;color:#ffcf94}
+.mito-model-note{font-size:12px;line-height:1.8;color:#91adbf;margin:0;padding:0 23px 18px}
+.mito-detail{padding:25px;display:flex;flex-direction:column}
+.mito-detail h2{font-size:27px;margin:10px 0 4px}
+#mitoPartEn{color:#718b9a;font-size:14px;margin-bottom:14px}
+.mito-detail h3{font-size:13px;color:#59818e;margin:14px 0 5px}
+.mito-detail p{font-size:14px;line-height:1.85;color:#466577;margin:0}
+.mito-misconception{background:#fdf3e7;border-left:3px solid #d9a154;border-radius:0 8px 8px 0;padding:13px 15px;margin:18px 0 12px}
+.mito-misconception strong{font-size:12px;color:#8a5a15}
+.mito-misconception p{font-size:13px;margin-top:7px}
+.mito-part-limit{font-size:12px!important;color:#7d919c!important;line-height:1.8}
+.mito-primary{border:0;border-radius:8px;background:#0b705e;color:#fff;padding:12px 16px;font-size:14px;cursor:pointer;margin-top:auto}
+.mito-section-heading{display:flex;align-items:center;justify-content:space-between;gap:15px;margin-bottom:17px}
+.mito-section-heading h2{font-size:23px;margin:8px 0}
+.mito-section-heading>span{font-size:13px;color:#6d8695}
+.mito-directory{margin-top:28px}
+.mito-part-group{display:flex;align-items:flex-start;gap:14px;margin:12px 0}
+.mito-part-group h3{font-size:12px;font-weight:500;color:#637e90;min-width:90px;margin:13px 0}
+.mito-part-group>div{display:flex;flex-wrap:wrap;gap:8px}
+.mito-part-group button{background:#fff;border:1px solid #d0e0e6;border-radius:9px;padding:11px 14px;font-size:14px;color:#365d72;cursor:pointer}
+.mito-part-group button:before{content:'';display:inline-block;width:9px;height:9px;border-radius:3px;background:var(--mito-part);margin-right:8px}
+.mito-part-group button[aria-pressed=true]{border-color:#c98a34;background:#fdf1e2;color:#8a5a15}
+.mito-small{font-size:12px;color:#718995;line-height:1.8}
+.mito-bottom{display:grid;grid-template-columns:1.25fr 1fr;gap:26px;margin-top:30px}
+.mito-question,.mito-limits{border:1px solid #d4e2e9;padding:25px;border-radius:16px;background:#fff;min-width:0}
+.mito-bottom h2{font-size:21px}
+#mitoQuestionPrompt{font-size:19px;line-height:1.7;margin:16px 0}
+#mitoQuestionChoices{display:flex;flex-direction:column;gap:10px}
+#mitoQuestionChoices button{display:block;width:100%;text-align:left;margin:0;line-height:1.8;border:1px solid #c3d8e0;border-radius:8px;background:#fff;color:#345e70;padding:11px 13px;font-size:14px;cursor:pointer}
+#mitoQuestionChoices button.correct{border-color:#42a489;background:#e5f5ee}
+#mitoQuestionChoices button.wrong{border-color:#ce9b8b;background:#fff1eb}
+#mitoQuestionChoices button:disabled{cursor:default}
+#mitoQuestionFeedback{color:#147762;font-size:14px;margin-top:14px}
+#mitoQuestionRetry{margin-top:12px;border:1px solid #c3d8e0;border-radius:8px;background:#fff;color:#345e70;padding:10px 12px;font-size:14px;cursor:pointer}
+#mitoQuestionRetryNote{font-size:12px;color:#718995;margin-top:10px!important}
+.mito-limits ul{margin:14px 0;padding-left:20px}
+.mito-limits li{font-size:14px;line-height:1.85;color:#557383;margin-bottom:9px}
+.mito-footer{margin-top:30px}
+.mito-footer a{color:#52788c}
+#mitoMain button:focus-visible,#mitoMain a:focus-visible{outline:3px solid #b5761f;outline-offset:3px}
+#mitoCanvas:focus-visible{outline:3px solid #ffc07a;outline-offset:-3px}
+
+@media(max-width:1050px){
+  .mito-workspace{grid-template-columns:minmax(0,1fr) 300px}
+  .mito-detail{padding:20px}
+}
+
+@media(max-width:780px){
+  .mito-badge{display:none}
+  .mito-heading h1{font-size:26px}
+  .mito-heading p{font-size:14px}
+  .mito-workspace{grid-template-columns:1fr}
+  #mitoViewport{height:360px}
+  .mito-bottom{grid-template-columns:1fr;gap:16px}
+  .mito-section-heading{align-items:flex-start;flex-direction:column;gap:5px}
+  .mito-part-group{flex-direction:column;gap:4px}
+  .mito-part-group h3{margin:6px 0}
+  .mito-controls{padding:12px 15px;gap:12px}
+  .mito-controls>span{margin-left:0}
+  .mito-stage-top{padding:16px 15px}
+  .mito-view-hint{left:15px}
+  .mito-model-note{padding:0 15px 16px}
+  .mito-question,.mito-limits{padding:22px 16px}
+}
+
+@media(max-width:400px){
+  .mito-stage-top span{letter-spacing:1px}
+  #mitoViewport{height:320px}
+}

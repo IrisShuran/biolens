@@ -1,0 +1,134 @@
+/* 细胞分裂 MVP · 独立页面样式
+   本页不引入 style.css：所有正文、按钮与焦点视觉在此文件内自带，
+   避免全站样式表的潜在覆盖。所有类名以 mitosis 前缀。
+   断点：≥900px 为桌面（模型 2/3、说明 1/3）；<900px 单列。 */
+
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{margin:0;background:#f3f6f8;color:#172d42;font-family:Inter,"Segoe UI","Microsoft YaHei",sans-serif;font-size:16px;line-height:1.7}
+button,input,select{font:inherit}
+button,a{-webkit-tap-highlight-color:transparent}
+button{cursor:pointer}
+p{margin:0}
+ul,ol{margin:0;padding-left:20px}
+h1,h2,h3{margin:0;line-height:1.35}
+a{color:#146a83}
+.mitosis-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+.mitosis-header{height:76px;border-bottom:1px solid #dce4e9;display:flex;align-items:center;justify-content:space-between;gap:14px;padding:0 5%}
+.mitosis-brand{display:flex;align-items:center;gap:12px;font-size:24px;font-weight:750;text-decoration:none;color:#172d42;min-height:44px}
+.mitosis-mark{background:#172d42;color:#70e4c8;border-radius:11px;width:34px;height:37px;text-align:center;line-height:37px;font-family:Georgia,serif;font-style:italic}
+.mitosis-brand-cn{font-size:14px;font-weight:400;margin-left:8px;color:#687b89}
+.mitosis-nav{display:flex;gap:10px;flex-wrap:wrap;justify-content:flex-end}
+.mitosis-back{display:inline-flex;align-items:center;min-height:44px;padding:6px 12px;font-size:16px;font-weight:600;color:#2c5466;text-decoration:none;border:1px solid #cbdce3;border-radius:9px;background:#fff;white-space:nowrap}
+.mitosis-back:hover{border-color:#8fb3c2}
+
+#mitosisMain{max-width:1280px;margin:0 auto;padding:26px clamp(14px,4%,52px) 40px}
+.mitosis-eyebrow{font-size:12px;letter-spacing:1.5px;font-weight:650;color:#617484}
+.mitosis-heading{display:flex;align-items:center;justify-content:space-between;gap:20px;margin-bottom:14px}
+.mitosis-heading h1{font-size:clamp(24px,2.5vw,34px);letter-spacing:-.5px;margin:8px 0}
+.mitosis-heading p{color:#627d8d;max-width:760px}
+.mitosis-badge{font-size:14px;padding:9px 13px;border:1px solid #cddce5;border-radius:22px;background:#fff;white-space:nowrap;color:#4a6879}
+.mitosis-constant-note{font-size:14px;color:#5c7583;margin:0 0 18px;padding:10px 14px;background:#eef4f7;border-left:3px solid #9db8c6;border-radius:0 8px 8px 0;max-width:960px}
+
+/* 阶段按钮 */
+.mitosis-stages{display:flex;flex-wrap:wrap;gap:9px;margin:0 0 20px}
+.mitosis-stage-btn{display:inline-flex;align-items:center;gap:8px;min-height:48px;padding:9px 14px;font-size:16px;font-weight:600;color:#365d72;background:#fff;border:1px solid #d0e0e6;border-radius:11px}
+.mitosis-stage-btn .mitosis-stage-num{flex:none;width:24px;height:24px;border-radius:50%;border:1px solid #b7cfd9;text-align:center;line-height:22px;font-size:14px;color:#52788c}
+.mitosis-stage-btn .mitosis-stage-sub{font-size:12px;font-weight:500;color:#7a8f9c}
+.mitosis-stage-btn[aria-pressed=true]{border-color:#2a9d8f;background:#e6f6f2;color:#17685b}
+.mitosis-stage-btn[aria-pressed=true] .mitosis-stage-num{border-color:#2a9d8f;color:#17685b;background:#fff}
+
+.mitosis-layout{display:grid;gap:20px;grid-template-columns:minmax(0,2fr) minmax(0,1fr)}
+.mitosis-stage{grid-column:1;background:#101f30;color:#c8dfec;border-radius:18px;min-width:0;overflow:hidden;display:flex;flex-direction:column}
+.mitosis-stage-top{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 20px;font-size:12px;letter-spacing:2px;color:#9fc0d0}
+#mitosisStatus{color:#ffcf94;letter-spacing:0;font-size:14px}
+.mitosis-viewport{position:relative;background:#0d1b2a}
+#mitosisSvg{display:block;width:100%;height:auto}
+/* SVG 内部元素 */
+.mitosis-membrane{fill:#132a3c;stroke:#78d6cd;stroke-width:3}
+#gEnvelope circle{fill:#132a3c;fill-opacity:.35;stroke:#9fc0d0;stroke-width:1.5;stroke-dasharray:6 5}
+#gEquator line{stroke:#7fb8aa;stroke-width:1.5;stroke-dasharray:7 6}
+#gPoles circle{fill:#ffcf94;stroke:#ffcf94;stroke-width:1}
+#gFibers line{stroke:#7f9db2;stroke-width:1.5}
+#gChrom circle{stroke:#0d1b2a;stroke-width:1}
+.mitosis-fallback{margin:0;padding:20px;border:1px solid #6d5636;background:#3a2c1a;color:#ffd7a8;border-radius:10px;font-size:16px;line-height:1.8}
+.mitosis-fallback ol{padding-left:22px}
+.mitosis-fallback li{margin-bottom:6px}
+
+.mitosis-controls{display:flex;flex-wrap:wrap;gap:10px;padding:14px 20px;border-top:1px solid #284858}
+.mitosis-controls button{min-height:46px;padding:10px 16px;font-size:16px;font-weight:600;color:#d3e7ef;background:#203f51;border:1px solid #4d687a;border-radius:9px}
+.mitosis-controls button:hover{background:#29485c}
+.mitosis-controls button:disabled{opacity:.4;cursor:default}
+.mitosis-controls .mitosis-primary{background:#1f7a6d;border-color:#3ca08f;color:#eafff9}
+.mitosis-controls .mitosis-primary:hover{background:#268b7d}
+.mitosis-count{font-size:16px;line-height:1.7;color:#a8c3d3;padding:0 20px;margin:0}
+/* 染色体身份台账（DOM 文字，真实 CSS px，无 SVG 缩放问题） */
+.mitosis-ledger{display:grid;gap:5px 16px;padding:8px 20px 16px}
+.mitosis-ledger-item{display:flex;align-items:baseline;gap:8px;min-width:0}
+.mitosis-ledger-item strong{flex:none;font-size:16px;color:#eaf5fb}
+.mitosis-ledger-item>span:last-child{font-size:15px;line-height:1.55;color:#9fc0d0}
+@media(min-width:900px){.mitosis-ledger{grid-template-columns:1fr 1fr}}
+
+.mitosis-explain{grid-column:2;display:flex;flex-direction:column;background:#fff;border:1px solid #d4e2e9;border-radius:18px;padding:22px;min-width:0}
+.mitosis-explain h2{font-size:26px;margin:8px 0 2px}
+.mitosis-en{color:#718b9a;font-size:14px;margin-bottom:10px}
+.mitosis-stage-text{font-size:16px;line-height:1.85;color:#3f5f72}
+.mitosis-stage-note{font-size:14px;line-height:1.75;color:#6d8695;margin-top:10px;padding:10px 12px;background:#f4f8fa;border-radius:8px}
+
+.mitosis-legend{margin-top:16px;padding-top:14px;border-top:1px solid #e2ecf1}
+.mitosis-legend h3{font-size:15px;color:#59818e;margin-bottom:8px}
+.mitosis-legend ul{list-style:none;padding:0;margin:0}
+.mitosis-legend li{display:flex;align-items:center;gap:9px;font-size:15px;line-height:1.6;color:#466577;margin-bottom:5px}
+.mitosis-swatch{flex:none;width:14px;height:14px;border-radius:4px;background:var(--c)}
+.mitosis-legend-note{font-size:13px;color:#6d8695;margin-top:8px;line-height:1.7}
+
+.mitosis-stage-list{margin-top:16px;padding-top:14px;border-top:1px solid #e2ecf1;list-style:none;padding-left:0}
+.mitosis-stage-list li{font-size:14px;line-height:1.7;color:#5a7685;margin-bottom:8px;padding-left:16px;position:relative}
+.mitosis-stage-list li:before{content:'';position:absolute;left:0;top:9px;width:7px;height:7px;border-radius:50%;background:#7fb8aa}
+
+.mitosis-quiz{background:#fff;border:1px solid #d4e2e9;border-radius:16px;padding:22px;min-width:0;margin-top:22px}
+.mitosis-quiz h2{font-size:20px;margin:10px 0 14px}
+.mitosis-choices{border:0;margin:0;padding:0;display:flex;flex-direction:column;gap:10px}
+.mitosis-choices label{display:flex;align-items:flex-start;gap:10px;min-height:44px;padding:11px 13px;font-size:16px;line-height:1.7;color:#345e70;border:1px solid #c3d8e0;border-radius:9px;cursor:pointer}
+.mitosis-choices input{flex:none;width:20px;height:20px;margin-top:3px;accent-color:#2a9d8f}
+.mitosis-option-key{flex:none;width:24px;height:24px;border-radius:50%;border:1px solid #b7cfd9;text-align:center;font-size:14px;line-height:22px;color:#52788c}
+.mitosis-choices label.correct{border-color:#42a489;background:#e5f5ee}
+.mitosis-choices label.correct .mitosis-option-key{border-color:#42a489;color:#1c7a63}
+.mitosis-choices label.wrong{border-color:#ce9b8b;background:#fff1eb}
+.mitosis-choices label.wrong .mitosis-option-key{border-color:#ce9b8b;color:#a2523a}
+.mitosis-choices label:has(input:checked){border-color:#2a9d8f;background:#eef9f6}
+#mitosisQuizSubmit,#mitosisQuizRetry{margin-top:14px;min-height:44px;padding:10px 16px;font-size:16px;font-weight:600;color:#fff;background:#1f7a6d;border:1px solid #2a9d8f;border-radius:9px}
+#mitosisQuizSubmit:hover,#mitosisQuizRetry:hover{background:#268b7d}
+#mitosisQuizSubmit:disabled{opacity:.5;cursor:default}
+#mitosisQuizRetry{color:#345e70;background:#fff;border:1px solid #c3d8e0}
+#mitosisQuizRetry:hover{background:#f4f8fa}
+.mitosis-quiz-feedback{color:#147762;font-size:16px;margin-top:14px}
+.mitosis-quiz-note{font-size:13px;color:#7a8f9c;margin-top:12px}
+
+.mitosis-footer{margin-top:24px;border-top:1px solid #dce4e9;padding-top:16px}
+.mitosis-footer p{font-size:16px;color:#5c7583;margin-bottom:8px}
+.mitosis-footer a{display:inline-flex;align-items:center;min-height:44px}
+
+#mitosisMain button:focus-visible,#mitosisMain a:focus-visible,.mitosis-header a:focus-visible{outline:3px solid #b5761f;outline-offset:3px}
+.mitosis-choices label:has(input:focus-visible){outline:3px solid #b5761f;outline-offset:2px}
+
+@media(max-width:899px){
+  .mitosis-header{height:auto;padding:12px 5%;flex-wrap:wrap}
+  .mitosis-heading{flex-direction:column;align-items:flex-start}
+  .mitosis-badge{white-space:normal}
+  .mitosis-layout{grid-template-columns:minmax(0,1fr)}
+  .mitosis-stage{grid-column:1}
+  .mitosis-explain{grid-column:1}
+  #mitosisMain{padding:20px 4% 32px}
+  .mitosis-stage-top{padding:12px 16px}
+  .mitosis-controls{padding:12px 16px}
+  .mitosis-count{padding:0 16px}
+  .mitosis-ledger{padding:8px 16px 14px}
+  .mitosis-quiz{padding:20px 16px}
+  .mitosis-controls button{flex:1 1 40%}
+}
+
+@media (prefers-reduced-motion: reduce){
+  *,*:before,*:after{animation:none!important;transition:none!important}
+}

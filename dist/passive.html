@@ -1,0 +1,296 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>被动运输：分子怎样越过细胞膜？ | BioLens</title>
+<meta name="description" content="BioLens 被动运输教学页：先预测，再观察氧气的双向运动与净移动，比较葡萄糖载体通路，并理解动态平衡。">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='12' fill='%23112132'/%3E%3Ccircle cx='12' cy='13' r='3' fill='%2378d6cd'/%3E%3Ccircle cx='28' cy='27' r='3' fill='%2378d6cd'/%3E%3Cpath d='M20 8v24M15 14h10M15 26h10' stroke='%23e8c585' stroke-width='2'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="passive.css?v=20261114c">
+<link rel="stylesheet" href="passive-learning.css?v=20261114d">
+<link rel="stylesheet" href="site-shell.css?v=20261114b">
+
+<link rel="stylesheet" href="visual-system.css?v=1"><link rel="stylesheet" href="layout-system.css?v=1">
+<link rel="stylesheet" href="site-transition.css?v=2"><script src="site-transition.js?v=2"></script></head>
+<body>
+<a class="passive-skip" href="#passiveMain">跳到主要内容</a>
+<header class="bio-shell">
+  <a class="bio-shell-brand" id="passiveBrand" href="./index.html"><span class="bio-shell-mark">B</span><span>BioLens</span><span class="bio-shell-tagline">生物，看得见</span></a>
+  <nav class="bio-shell-actions" aria-label="全站导航"><a href="./index.html">学习首页</a><a href="curriculum.html">课程地图</a><button type="button" id="passiveHelpOpen" hidden>使用帮助</button></nav>
+</header>
+<nav class="bio-trail" aria-label="当前位置"><a id="passiveHomeTop" href="./index.html#cell">细胞世界</a><span aria-hidden="true">›</span><a id="passiveMembraneTop" href="./membrane.html">细胞膜</a><span aria-hidden="true">›</span><strong aria-current="page">被动运输</strong></nav>
+
+<main id="passiveMain">
+  <section class="passive-heading" aria-labelledby="passiveTitle">
+    <div>
+      <p class="passive-eyebrow">细胞膜 · 物质跨膜</p>
+      <h1 id="passiveTitle">被动运输：分子<span class="passive-title-tail">怎样越过细胞膜？</span></h1>
+      <p class="passive-subtitle">先预测，再观察；分清双向运动与净移动。</p>
+    </div>
+    <span class="passive-badge">教学示意 · 有限粒子模型</span>
+  </section>
+
+  <p class="passive-disclaimer" role="note">这是教学示意。两侧体积相同，点的数量代表相对浓度；速度、大小与时间不对应真实生理测量。</p>
+
+  <section class="learning-welcome" id="learningWelcome" aria-labelledby="learningWelcomeTitle" hidden>
+    <p class="passive-eyebrow">第一次来？从这里开始</p>
+    <h2 id="learningWelcomeTitle">用一次预测，开始探索跨膜运动。</h2>
+    <ol><li><strong>先选一个预测</strong><span>观察左 80、右 20 的初始分布，留下你的猜想。</span></li><li><strong>观察与对照</strong><span>实验自动开始后，比较两个方向的跨膜计数。</span></li><li><strong>改变条件，形成解释</strong><span>探索载体和浓度条件，最后回看最初的预测。</span></li></ol>
+    <div class="learning-actions"><button type="button" id="learningBegin" class="passive-button passive-button-primary">带我开始</button><button type="button" id="learningSkip" class="passive-button">直接探索</button></div>
+    <p class="passive-small">可随时从顶部打开使用帮助。直接探索也需要先提交预测。</p>
+  </section>
+  <section class="learning-help" id="learningHelp" aria-labelledby="learningHelpTitle" hidden>
+    <h2 id="learningHelpTitle" tabindex="-1">这门课怎样使用？</h2>
+    <p>选预测 → 提交 → 进入观察并自动实验 → 对照证据与解释。暂停后可以慢慢比较计数。</p>
+    <ul><li>单步：暂停状态下推进 0.5 个模拟秒。</li><li>重播或切换实验条件：重置当前场景的粒子和计数。</li><li>重新学习：清除本课预测与答题，回到第 1 步。</li><li>键盘：用 Tab 移动焦点，用 Enter 或空格操作按钮；单选题用方向键选择。触屏直接轻触按钮。</li></ul>
+    <div class="learning-actions"><button type="button" id="learningTipsToggle" class="passive-button">收起操作提示</button><button type="button" id="learningReview" class="passive-button">重看入门介绍</button><button type="button" id="learningHelpClose" class="passive-button">关闭帮助</button></div>
+  </section>
+  <p class="learning-task" id="learningTask" hidden aria-live="polite"></p>
+
+  <nav class="passive-steps" id="passiveStepNav" aria-label="学习步骤">
+    <button type="button" data-step="1" aria-current="step"><span class="passive-step-num">1</span><span class="passive-step-label">预测</span></button>
+    <button type="button" data-step="2" disabled><span class="passive-step-num">2</span><span class="passive-step-label">观察扩散</span></button>
+    <button type="button" data-step="3" disabled><span class="passive-step-num">3</span><span class="passive-step-label">比较通路</span></button>
+    <button type="button" data-step="4" disabled><span class="passive-step-num">4</span><span class="passive-step-label">动态平衡</span></button>
+    <button type="button" data-step="5" disabled><span class="passive-step-num">5</span><span class="passive-step-label">检查理解</span></button>
+  </nav>
+
+  <div class="passive-layout">
+    <div class="passive-column-left">
+      <section class="passive-model-card" aria-labelledby="passiveModelTitle">
+        <div class="passive-model-top">
+          <p id="passiveModelTitle">PASSIVE TRANSPORT / 动态模型</p>
+          <span>非真实比例</span>
+        </div>
+        <div class="passive-viewport" id="passiveViewport">
+          <canvas id="passiveCanvas" role="img" aria-label="被动运输模型：氧气，左侧80个粒子，右侧20个粒子，已暂停。" aria-describedby="passiveCanvasNote"></canvas>
+          <div class="passive-canvas-fallback" id="passiveCanvasFallback" hidden>
+            <div class="passive-fallback-diagram" aria-hidden="true">
+              <span>左侧 <b id="passiveFallbackLeft">80</b></span>
+              <i></i>
+              <span>右侧 <b id="passiveFallbackRight">20</b></span>
+            </div>
+            <p><strong>动画不可用。</strong>你的浏览器没有提供 Canvas 2D。这里保留静态膜示意、文字说明和题目；不会伪造播放结果。</p>
+          </div>
+        </div>
+        <div class="passive-model-foot">
+          <ul class="passive-legend" aria-label="图例">
+            <li id="passiveLegendOxygen"><span class="passive-swatch passive-swatch-oxygen" aria-hidden="true"></span>氧气 O₂：圆点</li>
+            <li id="passiveLegendGlucose" hidden><span class="passive-swatch passive-swatch-glucose" aria-hidden="true"></span>葡萄糖：菱形</li>
+            <li id="passiveCarrierLegend" hidden><span class="passive-carrier-key" aria-hidden="true"></span>载体蛋白：黄色双叶</li>
+          </ul>
+          <p class="passive-carrier-activity" id="passiveCarrierActivity">氧气不经过载体，直接通过脂双层。</p>
+        </div>
+      </section>
+
+      <section class="passive-stats" aria-labelledby="passiveStatsTitle">
+        <div class="passive-stats-head">
+          <div>
+            <p class="passive-eyebrow">MODEL READOUT</p>
+            <h2 id="passiveStatsTitle">实时统计</h2>
+          </div>
+          <span class="passive-scene-badge" id="passiveSceneBadge">氧气 · 80:20</span>
+        </div>
+        <div class="passive-counts" aria-label="两侧粒子数">
+          <div class="passive-count-card">
+            <span>左侧</span>
+            <strong id="passiveCountLeft">80</strong>
+            <small>个粒子</small>
+          </div>
+          <div class="passive-count-card">
+            <span>右侧</span>
+            <strong id="passiveCountRight">20</strong>
+            <small>个粒子</small>
+          </div>
+        </div>
+        <div class="passive-stat-grid">
+          <div class="passive-stat-block">
+            <h3>累计跨膜事件</h3>
+            <dl>
+              <div><dt>左 → 右</dt><dd id="passiveCumulativeL2R">0</dd></div>
+              <div><dt>右 → 左</dt><dd id="passiveCumulativeR2L">0</dd></div>
+            </dl>
+          </div>
+          <div class="passive-stat-block">
+            <h3 id="passiveWindowTitle">最近 5 个模拟秒</h3>
+            <dl>
+              <div><dt>左 → 右</dt><dd id="passiveWindowL2R">0</dd></div>
+              <div><dt>右 → 左</dt><dd id="passiveWindowR2L">0</dd></div>
+              <div class="passive-difference"><dt>差值（左→右为正）</dt><dd id="passiveWindowDiff">0</dd></div>
+            </dl>
+            <p class="passive-window-period" id="passiveWindowPeriod">窗口 0.0 / 5 模拟秒（不足5秒，按实际时长）</p>
+          </div>
+        </div>
+        <p class="passive-stats-note">计数是模型中的“跨膜完成”事件，不是真实单位通量。在途粒子仍归出发侧。</p>
+        <p class="passive-clock" id="passiveSimClock">模拟时钟 0.0 秒 · 已暂停</p>
+        <p class="passive-canvas-note" id="passiveCanvasNote">点的数量代表相对浓度。跨膜中的粒子仍计入出发侧；到达后才改变侧别与计数。</p>
+      </section>
+    </div>
+
+    <div class="passive-column-side">
+      <aside class="passive-guide" id="passiveGuide" aria-labelledby="passiveGuideHeading">
+        <div class="passive-guide-kicker">
+          <span id="passiveGuideStep">第 1 步 / 5</span>
+          <span id="passiveGuideTag">预测</span>
+        </div>
+
+        <section class="passive-step-panel" id="passiveStepPanel1" aria-labelledby="passiveGuideHeading">
+          <p class="passive-eyebrow">先提出一个预测</p>
+          <h2 id="passiveGuideHeading">氧气总体会往哪边移动？</h2>
+          <div class="passive-scenario" aria-label="初始场景">
+            <div><span>预测场景</span><strong>左 80 · 右 20</strong></div>
+            <div><span>物质</span><strong>氧气 O₂</strong></div>
+          </div>
+          <fieldset class="passive-fieldset">
+            <legend>接下来一段时间，氧气总体会怎样移动？</legend>
+            <label class="passive-choice"><input type="radio" name="passivePrediction" value="A"><span class="passive-choice-key">A</span><span>净移动从左到右</span></label>
+            <label class="passive-choice"><input type="radio" name="passivePrediction" value="B"><span class="passive-choice-key">B</span><span>净移动从右到左</span></label>
+            <label class="passive-choice"><input type="radio" name="passivePrediction" value="C"><span class="passive-choice-key">C</span><span>分子只会从左到右</span></label>
+            <label class="passive-choice"><input type="radio" name="passivePrediction" value="D"><span class="passive-choice-key">D</span><span>所有分子不再移动</span></label>
+          </fieldset>
+          <p class="passive-feedback" id="passivePredictFeedback" role="status" hidden></p>
+          <button class="passive-button passive-button-primary passive-submit" id="passivePredictSubmit" type="button">提交预测</button>
+          <p class="passive-lock-note" id="passiveGateNote">提交后才能进入后续步骤或开始模拟。</p>
+        </section>
+
+        <section class="passive-step-panel" id="passiveStepPanel2" aria-labelledby="passiveGuideHeading2" hidden>
+          <p class="passive-eyebrow">观察扩散</p>
+          <h2 id="passiveGuideHeading2">双向运动，净移动向哪里？</h2>
+          <p>进入本步后实验会自动开始。观察两侧数量和累计跨膜事件；你仍可随时暂停或单步查看。</p>
+          <div class="learning-experiment-state" id="learningExperimentState" aria-live="polite">
+            <span class="learning-live-dot" aria-hidden="true"></span>
+            <div><strong id="learningExperimentLabel">准备实验</strong><p id="learningExperimentDetail">正在建立左 80、右 20 的氧气情境。</p></div>
+          </div>
+          <div class="passive-callout">
+            <strong>看什么</strong>
+            <p>每个粒子都会继续随机运动；跨膜事件在两个方向都可能发生。不要只盯住一个粒子。</p>
+          </div>
+          <section class="learning-evidence" id="learningEvidence" aria-labelledby="learningEvidenceTitle" hidden>
+            <p class="passive-eyebrow">预测 × 证据 × 解释</p>
+            <h3 id="learningEvidenceTitle">现在，用实验结果检验刚才的想法</h3>
+            <div class="learning-evidence-grid">
+              <div><span>我的预测</span><strong id="learningPredictionRecall">—</strong></div>
+              <div><span>实验观察</span><strong id="learningObservedResult">—</strong></div>
+            </div>
+            <p class="learning-verdict" id="learningVerdict"></p>
+            <p class="learning-science" id="learningScienceExplanation"></p>
+          </section>
+          <p class="passive-explain">“分子持续运动。浓度差影响总体统计趋势，并不指挥每一个分子的方向。”</p>
+          <p class="passive-small">计数窗口按模拟时钟滑动。暂停时，窗口和累计计数一起冻结。</p>
+        </section>
+
+        <section class="passive-step-panel" id="passiveStepPanel3" aria-labelledby="passiveGuideHeading3" hidden>
+          <p class="passive-eyebrow">比较通路</p>
+          <h2 id="passiveGuideHeading3">氧气与葡萄糖，通路相同吗？</h2>
+          <p>切换物质或载体条件会重置场景、粒子与计数，并让模型暂停。两个场景都从 80:20 开始。</p>
+          <div class="passive-segmented" role="group" aria-label="选择物质">
+            <button type="button" id="passiveMaterialOxygen" aria-pressed="true">氧气 O₂</button>
+            <button type="button" id="passiveMaterialGlucose" aria-pressed="false">葡萄糖</button>
+          </div>
+          <div class="passive-carrier-controls" id="passiveCarrierControls" hidden>
+            <fieldset class="passive-fieldset passive-fieldset-compact">
+              <legend>葡萄糖的运输通路</legend>
+              <label class="passive-choice"><input type="radio" name="passiveCarrier" value="yes" checked><span class="passive-choice-key">●</span><span>有可用载体</span></label>
+              <label class="passive-choice"><input type="radio" name="passiveCarrier" value="no"><span class="passive-choice-key">○</span><span>无可用载体</span></label>
+            </fieldset>
+            <p class="passive-small">无可用载体表示本模型移除了葡萄糖的跨膜通路；它在两侧区域内的随机运动仍然继续。</p>
+          </div>
+          <p class="passive-scene-notice" id="passiveSceneNotice">当前为氧气 80:20。</p>
+          <p class="passive-explain">“运输蛋白为葡萄糖提供跨膜路径；在本模型中，净移动仍沿浓度梯度发生。”</p>
+          <p class="passive-small">不比较这两种示例的实际运输速率。本版只做路径和可通行性的比较。</p>
+        </section>
+
+        <section class="passive-step-panel" id="passiveStepPanel4" aria-labelledby="passiveGuideHeading4" hidden>
+          <p class="passive-eyebrow">动态平衡</p>
+          <h2 id="passiveGuideHeading4">观察平衡附近的波动</h2>
+          <p>本步回到氧气模型，单独比较 80:20、20:80 和 50:50。切换情境会重新计数；第 3 步的葡萄糖观察可随时返回查看。</p>
+          <button class="passive-button passive-button-primary" id="passiveEqualStart" type="button">从等浓度开始</button>
+          <p class="passive-scene-notice" id="passiveBalanceNotice">点击按钮后建立新的氧气 50:50 情境，并暂停。</p>
+          <div class="passive-presets" role="group" aria-label="预设探索">
+            <span>预设探索（都会重置并暂停）</span>
+            <div>
+              <button type="button" id="passivePresetLeft80">左侧较多 80:20</button>
+              <button type="button" id="passivePresetRight80">右侧较多 20:80</button>
+              <button type="button" id="passivePresetEqual">两侧相同 50:50</button>
+            </div>
+          </div>
+          <p class="passive-explain">“动态平衡时分子仍在运动与交换。短时间的计数可以不相等；较长时间平均的净移动接近零。”</p>
+          <p class="passive-small">50:50 时分子仍在运动；短时间计数可能出现波动。</p>
+        </section>
+
+        <section class="passive-step-panel" id="passiveStepPanel5" aria-labelledby="passiveGuideHeading5" hidden>
+          <p class="passive-eyebrow">回看预测 · 检查理解</p>
+          <h2 id="passiveGuideHeading5">回到最初的预测</h2>
+          <div class="learning-evidence" id="learningFinalReview" aria-live="polite"><p class="passive-eyebrow">我的预测 × 氧气实验</p><div class="learning-evidence-grid"><div><span>我当时选择</span><strong id="learningFinalPrediction">—</strong></div><div><span>观察到的跨膜事件</span><strong id="learningFinalObservation">—</strong></div></div><p class="learning-science" id="learningFinalExplanation"></p></div>
+          <fieldset class="passive-fieldset">
+            <legend>氧气从左 80、右 20 开始时，怎样理解两方向的跨膜事件？</legend>
+            <label class="passive-choice"><input type="radio" name="passiveQuiz5" value="A"><span class="passive-choice-key">A</span><span>两个方向都发生，左到右通常更多</span></label>
+            <label class="passive-choice"><input type="radio" name="passiveQuiz5" value="B"><span class="passive-choice-key">B</span><span>只发生左到右的事件</span></label>
+            <label class="passive-choice"><input type="radio" name="passiveQuiz5" value="C"><span class="passive-choice-key">C</span><span>分子都停止运动</span></label>
+            <label class="passive-choice"><input type="radio" name="passiveQuiz5" value="D"><span class="passive-choice-key">D</span><span>氧气需要载体才可穿膜</span></label>
+          </fieldset>
+          <p class="passive-feedback" id="passiveQuizFeedback" role="status" hidden></p>
+          <button class="passive-button passive-button-primary passive-submit" id="passiveQuizSubmit" type="button">提交答案</button>
+          <button class="passive-button" id="passiveQuizRetry" type="button" hidden>再答一次</button>
+          <div class="passive-summary" id="passiveSummary" hidden>
+            <h3>本页要点</h3>
+            <ul>
+              <li>双向运动可以伴随单向净移动。</li>
+              <li>运输路径取决于物质与膜的性质。</li>
+              <li>动态平衡不等于静止。</li>
+            </ul>
+          </div>
+        </section>
+
+        <div class="passive-guide-foot">
+          <button class="passive-button passive-button-next" id="passiveNext" type="button" disabled>下一步</button>
+          <button class="passive-button passive-button-quiet" id="passiveRestart" type="button">重新学习</button>
+        </div>
+        <p class="passive-restart-note">“重新学习”会清除预测与第 5 步题目状态，并回到第 1 步。</p>
+      </aside>
+
+      <section class="passive-controls" aria-labelledby="passiveControlsTitle">
+        <div class="passive-controls-head">
+          <h2 id="passiveControlsTitle">模型控制</h2>
+          <p id="passiveSimStatus" role="status">已暂停 · 先提交预测</p>
+        </div>
+        <div class="passive-control-row">
+          <button class="passive-button passive-button-play" id="passivePlay" type="button" disabled>开始</button>
+          <button class="passive-button" id="passiveSingleStep" type="button" disabled>单步 +0.5 秒</button>
+          <button class="passive-button" id="passiveReplay" type="button" disabled>重播</button>
+        </div>
+        <p class="passive-back-notice" id="passiveBackNotice" role="status" hidden>页面曾转入后台，模拟已暂停；没有补算离开期间的时间。请手动继续。</p>
+        <p class="passive-small" id="passiveMotionNote">进入观察步骤后会自动播放。暂停会冻结模型时钟与计数窗口；单步每次推进 0.5 模拟秒。</p>
+      </section>
+    </div>
+  </div>
+
+  <section class="passive-limits" aria-labelledby="passiveLimitsTitle">
+    <div class="passive-limits-head">
+      <p class="passive-eyebrow">范围与限制</p>
+      <h2 id="passiveLimitsTitle">这个模型不表示什么？</h2>
+    </div>
+    <ul>
+      <li>只使用不带电的氧气和葡萄糖；不涉及离子、膜电位、渗透、主动运输或 ATP 开关。</li>
+      <li>两侧等体积、温度相同，无代谢能量供给，也无浓度维持源；无细胞体积变化。点是相对浓度，不是真实浓度。</li>
+      <li>氧气可直接穿过脂双层。葡萄糖只经 GLUT 类载体易化扩散；本模型忽略其直接穿膜的极低通透性，也不表示所有葡萄糖运输都是被动运输。</li>
+      <li>载体经历结合、构象变化与释放，不是永久打开的孔道。无载体表示移除可用通路，不叫“载体关门”；两个方向使用同一规则。</li>
+      <li>动态平衡是宏观浓度稳定、长期平均净通量为零；有限粒子模型仍有短时波动，不能在恰好 50:50 时冻结或强制配对交换。</li>
+      <li>示意时长不能换算为真实时间。动画速度、粒子大小与计数均不对应真实生理测量。</li>
+    </ul>
+    <p class="passive-reference">参考：<a href="https://openstax.org/books/biology-2e/pages/5-2-passive-transport" target="_blank" rel="noopener noreferrer">OpenStax Biology 2e §5.2 Passive Transport</a>。正文为教学改写，不整段抄录。</p>
+  </section>
+
+  <nav class="bio-related" aria-label="关联课程"><a id="passiveMembraneFooter" href="./membrane.html"><span>回看结构依据</span><strong>细胞膜：双层与膜蛋白</strong></a><a href="./index.html#mito"><span>把梯度联系到能量</span><strong>线粒体与 ATP 合成</strong></a></nav>
+  <footer class="passive-footer">
+    <div class="passive-footer-links"><a id="passiveHomeFooter" href="./index.html">返回学习首页</a><a href="curriculum.html">查看课程地图</a></div>
+    <p>BioLens · 被动运输：从结构到过程。</p>
+  </footer>
+</main>
+
+<script src="passive.js?v=20261114d"></script>
+<script src="passive-learning.js?v=20261114d"></script>
+
+<script src="visual-system.js?v=1"></script>
+</body>
+</html>
