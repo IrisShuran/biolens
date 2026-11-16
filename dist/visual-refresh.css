@@ -714,6 +714,14 @@ body:has(#homeMain) .site-context{display:none}
 .home-route-card h3{margin:16px 0 26px}
 .home-route-card p{margin-top:auto;padding-top:14px;border-top:1px solid var(--d-line-2)}
 
+/* Keep the route image full width, but give every line of copy room to breathe
+   inside the lifted card surface. */
+.home-route-card>span,.home-route-card>h3,.home-route-card>p{margin-left:20px;margin-right:20px}
+.home-route-card{padding-bottom:18px}
+@media(hover:hover) and (pointer:fine){
+  .home-route-card:hover{transform:translateY(-2px);box-shadow:0 12px 28px rgba(16,34,32,.13)}
+}
+
 /* ---------- 课程库：七个单元收成一行，指向课程地图 ---------- */
 .home-library{padding-block:clamp(46px,4.6vw,66px)}
 .home-library .home-section-heading{margin-bottom:clamp(20px,2.2vw,28px)}
