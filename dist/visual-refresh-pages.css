@@ -251,3 +251,19 @@ button { border-radius: 4px; }
 @media(max-width:700px){
   .atp-stage{margin:0}
 }
+
+/* The new editorial rows still lift on hover. Give their visible surface a
+   consistent inset, including the related links on every lesson page. */
+.bio-related a,
+.bio-related a:last-child,
+.bio-related.is-dark a,
+.bio-related.is-dark a:last-child{
+  padding-left:18px;
+  padding-right:18px;
+}
+
+/* This panel regained a border during the page refresh but kept a zero inset. */
+.passive-limits{
+  padding-left:clamp(18px,2.2vw,28px);
+  padding-right:clamp(18px,2.2vw,28px);
+}
