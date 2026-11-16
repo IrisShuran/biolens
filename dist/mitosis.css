@@ -110,8 +110,8 @@ a{color:#146a83}
 .mitosis-footer p{font-size:16px;color:#5c7583;margin-bottom:8px}
 .mitosis-footer a{display:inline-flex;align-items:center;min-height:44px}
 
-#mitosisMain button:focus-visible,#mitosisMain a:focus-visible,.mitosis-header a:focus-visible{outline:3px solid #b5761f;outline-offset:3px}
-.mitosis-choices label:has(input:focus-visible){outline:3px solid #b5761f;outline-offset:2px}
+#mitosisMain button:focus-visible,#mitosisMain a:focus-visible,.mitosis-header a:focus-visible{outline:var(--focus-w,2px) solid var(--focus-ring,#008d76);outline-offset:3px}
+.mitosis-choices label:has(input:focus-visible){outline:var(--focus-w,2px) solid var(--focus-ring,#008d76);outline-offset:2px}
 
 @media(max-width:899px){
   .mitosis-header{height:auto;padding:12px 5%;flex-wrap:wrap}

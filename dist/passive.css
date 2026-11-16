@@ -109,7 +109,7 @@ b,strong{font-weight:700}
 .passive-choice-key{flex:none;width:22px;height:22px;margin-top:1px;border:1px solid #b7cfd9;border-radius:50%;text-align:center;font-size:12px;line-height:20px;color:#52788c;background:#f8fbfc}
 .passive-choice:has(input:checked){border-color:#2d9c82;background:#ecf8f3;box-shadow:inset 3px 0 #2d9c82}
 .passive-choice:has(input:checked) .passive-choice-key{border-color:#2d9c82;background:#2d9c82;color:#fff}
-.passive-choice:has(input:focus-visible){outline:3px solid #b5761f;outline-offset:2px}
+.passive-choice:has(input:focus-visible){outline:var(--focus-w,2px) solid var(--focus-ring,#008d76);outline-offset:2px}
 .passive-choice:has(input:disabled){cursor:default;opacity:.82}
 .passive-submit{width:100%;margin-top:10px}
 .passive-feedback{font-size:15px!important;line-height:1.75!important;color:#175f52!important;background:#eaf7f2;border:1px solid #bee3d7;border-radius:9px;padding:10px 12px;margin-top:10px!important}
@@ -173,9 +173,9 @@ b,strong{font-weight:700}
 .passive-footer-links a{display:inline-flex;align-items:center;min-height:44px;padding:5px 11px;border:1px solid #cbdce3;border-radius:8px;background:#fff;color:#2c5466;text-decoration:none;font-size:14px;font-weight:600}
 .passive-footer p{font-size:12px;color:#5a707d}
 
-#passiveMain button:focus-visible,#passiveMain a:focus-visible,.passive-header a:focus-visible{outline:3px solid #b5761f;outline-offset:3px}
+#passiveMain button:focus-visible,#passiveMain a:focus-visible,.passive-header a:focus-visible{outline:var(--focus-w,2px) solid var(--focus-ring,#008d76);outline-offset:3px}
 #passiveMain button:focus:not(:focus-visible),#passiveMain a:focus:not(:focus-visible){outline:none}
-#passiveStepPanel1 h2:focus,#passiveStepPanel2 h2:focus,#passiveStepPanel3 h2:focus,#passiveStepPanel4 h2:focus,#passiveStepPanel5 h2:focus{outline:3px solid #b5761f;outline-offset:4px;border-radius:4px}
+#passiveStepPanel1 h2:focus,#passiveStepPanel2 h2:focus,#passiveStepPanel3 h2:focus,#passiveStepPanel4 h2:focus,#passiveStepPanel5 h2:focus{outline:var(--focus-w,2px) solid var(--focus-ring,#008d76);outline-offset:var(--focus-o,3px);border-radius:4px}
 
 @media(max-width:1099px){
   .passive-layout{grid-template-columns:minmax(0,1.75fr) minmax(0,1fr)}

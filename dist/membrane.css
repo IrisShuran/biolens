@@ -94,8 +94,8 @@ a{color:#146a83}
 /* 页脚许可链接同样给出 44px 高的点击区，避免细小内联链接。 */
 .membrane-footer a{display:inline-flex;align-items:center;min-height:44px}
 
-#membraneMain button:focus-visible,#membraneMain a:focus-visible,#membraneHeader a:focus-visible,.membrane-header a:focus-visible{outline:3px solid #b5761f;outline-offset:3px}
-#membraneCanvas:focus-visible{outline:3px solid #ffc07a;outline-offset:-3px}
+#membraneMain button:focus-visible,#membraneMain a:focus-visible,#membraneHeader a:focus-visible,.membrane-header a:focus-visible{outline:var(--focus-w,2px) solid var(--focus-ring,#008d76);outline-offset:3px}
+#membraneCanvas:focus-visible{outline:var(--focus-w,2px) solid var(--focus-ring-dark,#ffd38b);outline-offset:-3px}
 
 @media(max-width:899px){
   .membrane-header{height:auto;padding:12px 5%;flex-wrap:wrap}

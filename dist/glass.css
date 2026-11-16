@@ -1,0 +1,129 @@
+/* GLASS-THEME
+   细胞世界之外的三个世界（#dna/#mito/#atp）与三个独立页（membrane/mitosis/passive）共用。
+   配色沿用 Radix teal/amber 第 2–3 步的浅色（#F3FBF9/#E0F8F3/#FFF7C2/#FEFBE9），
+   选项描边用 teal-8 #53B9AB（文档标注 strong border / focus ring）。 */
+
+:root{
+  --g-grad:
+    radial-gradient(720px 460px at 10% 4%,#E0F8F3 0,transparent 66%),
+    radial-gradient(640px 420px at 94% 10%,#FFF7C2 0,transparent 68%),
+    linear-gradient(170deg,#F3FBF9 0,#EFF8F3 48%,#FBF6E4 100%);
+  --g-bg:rgba(255,255,255,.44);
+  --g-line:rgba(23,45,66,.10);
+  --g-shadow:0 18px 40px -22px rgba(13,31,43,.28),inset 0 1px 0 rgba(255,255,255,.85);
+  --g-accent:#53B9AB;
+}
+
+/* 1. 背景：只在这几个页面/世界命中，首页与结构查看器不受影响 */
+body:has(#dnaMain:not([hidden])),
+body:has(#mitoMain:not([hidden])),
+body:has(#atpMain:not([hidden])),
+body:has(.membrane-stage),
+body:has(.mitosis-stage),
+body:has(.passive-model-card){
+  background:var(--g-grad);
+  background-attachment:fixed;
+}
+
+/* 2. 卡片毛玻璃 */
+:is(#courseContent,.lesson-copy,.below .concept,.below .quiz,.experiment,
+    .mito-workspace,.mito-question,.mito-limits,
+    .atp-workspace,.atp-limits,.atp-sources,
+    .membrane-detail,.membrane-question,.membrane-limits,
+    .mitosis-explain,.mitosis-quiz,
+    #learningWelcome,#passiveGuide,.passive-limits){
+  background:var(--g-bg);
+  -webkit-backdrop-filter:blur(18px) saturate(1.5);
+  backdrop-filter:blur(18px) saturate(1.5);
+  border:1px solid var(--g-line);
+  box-shadow:var(--g-shadow);
+}
+:is(.mito-detail,.atp-detail){background:transparent}
+
+/* 3. 交互：过渡先统一挂上，再按类给效果 */
+:is(.course-path,).course-path button,.course-actions button,
+:is(.mito-part-group) button,.mito-question button,
+:is(.atp-steps) button:not(.is-locked),
+:is(.membrane-directory-list) button,.membrane-question button,
+:is(.mitosis-stages) button,#mitosisQuizChoices button,
+:is(.passive-steps) button,
+.cell-primary,.mito-primary,.atp-primary,.mitosis-primary,
+.course-primary,.passive-button,
+#returnFork,#membraneBackDetail,.bio-related a{
+  transition:transform .18s cubic-bezier(.2,.8,.2,1),background-color .2s,border-color .2s,box-shadow .2s,filter .2s,color .2s;
+}
+
+@media(hover:hover) and (pointer:fine){
+  /* 浅底选项 / 描边按钮 */
+  :is(.mito-part-group) button:hover,
+  .mito-question button:hover,
+  :is(.membrane-directory-list) button:hover,
+  .membrane-question button:hover,
+  :is(.mitosis-stages) button:not([aria-pressed=true]):hover,
+  #mitosisQuizChoices button:not(:disabled):hover{
+    transform:translateY(-2px);background:rgba(255,255,255,.94);
+    border-color:var(--g-accent);box-shadow:0 10px 22px -12px rgba(13,31,43,.38);
+  }
+  /* 浅色卡片上的深色步骤条：只提亮，不换色系 */
+  .course-path button:hover,
+  :is(.passive-steps) button:not([aria-pressed=true]):hover{
+    transform:translateY(-2px);background:#245768;border-color:#7fb6cc;
+    box-shadow:0 10px 22px -14px rgba(13,31,43,.45);
+  }
+  /* 深色舞台上的控件 */
+  :is(.mito-stage-top,.atp-stage-top,.atp-controls,.membrane-stage-top,.mitosis-controls) button:hover{
+    background:#2b566b;border-color:#7fb6cc;transform:translateY(-1px);
+  }
+  .atp-steps button:not(.is-locked):hover{background:#4a3a22;border-color:#c9a05a;transform:translateY(-1px)}
+  /* 实心主按钮 */
+  :is(.cell-primary,.mito-primary,.atp-primary,.mitosis-primary,.course-primary,.passive-button-primary):not(:disabled):hover{
+    transform:translateY(-2px);filter:brightness(1.08);box-shadow:0 14px 28px -12px rgba(11,112,94,.6);
+  }
+  :is(.cell-primary,.mito-primary,.atp-primary,.mitosis-primary,.course-primary,.passive-button-primary):not(:disabled):active{
+    transform:translateY(0) scale(.99);filter:brightness(.98);box-shadow:none;
+  }
+  /* 白色次级按钮 */
+  :is(.passive-button-quiet,#returnFork,#membraneBackDetail):hover{
+    transform:translateY(-2px);background:rgba(255,255,255,.96);border-color:var(--g-accent);
+    box-shadow:0 10px 22px -12px rgba(13,31,43,.38);
+  }
+  /* 卡片式链接 */
+  .bio-related a:hover{transform:translateY(-2px);border-color:var(--g-accent);box-shadow:0 14px 30px -18px rgba(13,31,43,.4)}
+  /* 页脚文字链接 */
+  :is(.mito-footer,.atp-footer,.membrane-footer,.mitosis-footer,.passive-footer,.passive-reference,.passive-limits) a:hover,
+  .dnaMain a:hover{color:#0b705e;text-decoration-thickness:2px;text-underline-offset:3px}
+}
+
+:is(.mito-part-group) button:active,
+.mito-question button:active,
+:is(.membrane-directory-list) button:active,
+.membrane-question button:active,
+:is(.mitosis-stages) button:active,
+:is(.passive-steps) button:active,
+.course-path button:active{transform:translateY(0) scale(.99)}
+
+@media(prefers-reduced-motion:reduce){
+  :is(.course-path,.course-actions,.mito-part-group,.mito-question,.atp-steps,.membrane-directory-list,
+      .membrane-question,.mitosis-stages,.mitosis-controls,.passive-steps,.mito-stage-top,.atp-stage-top,
+      .atp-controls,.membrane-stage-top,.bio-related) button,
+  .cell-primary,.mito-primary,.atp-primary,.mitosis-primary,.course-primary,.passive-button,
+  #returnFork,#membraneBackDetail,.bio-related a{transition:none}
+  :is(.mito-part-group,.mito-question,.membrane-directory-list,.membrane-question,.mitosis-stages,
+      .passive-steps,.course-path) button:hover,
+  .bio-related a:hover{transform:none}
+}
+
+/* 单选式选项：被动运输的预测、分裂的选项、DNA 的预测都是 label 包 radio */
+.passive-choice,.mitosis-choices label,#predictionOptions label{
+  transition:transform .18s cubic-bezier(.2,.8,.2,1),background-color .2s,border-color .2s,box-shadow .2s;
+}
+@media(hover:hover) and (pointer:fine){
+  .passive-choice:hover,.mitosis-choices label:hover,#predictionOptions label:hover{
+    transform:translateY(-2px);background:rgba(255,255,255,.94);
+    border-color:var(--g-accent);box-shadow:0 10px 22px -12px rgba(13,31,43,.38);
+  }
+}
+@media(prefers-reduced-motion:reduce){
+  .passive-choice,.mitosis-choices label,#predictionOptions label{transition:none}
+  .passive-choice:hover,.mitosis-choices label:hover,#predictionOptions label:hover{transform:none}
+}

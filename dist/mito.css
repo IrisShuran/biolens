@@ -61,8 +61,8 @@
 .mito-limits li{font-size:14px;line-height:1.85;color:#557383;margin-bottom:9px}
 .mito-footer{margin-top:30px}
 .mito-footer a{color:#52788c}
-#mitoMain button:focus-visible,#mitoMain a:focus-visible{outline:3px solid #b5761f;outline-offset:3px}
-#mitoCanvas:focus-visible{outline:3px solid #ffc07a;outline-offset:-3px}
+#mitoMain button:focus-visible,#mitoMain a:focus-visible{outline:var(--focus-w,2px) solid var(--focus-ring,#008d76);outline-offset:3px}
+#mitoCanvas:focus-visible{outline:var(--focus-w,2px) solid var(--focus-ring-dark,#ffd38b);outline-offset:-3px}
 
 @media(max-width:1050px){
   .mito-workspace{grid-template-columns:minmax(0,1fr) 300px}
