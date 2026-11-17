@@ -1,3 +1,4 @@
-html::before{content:"";position:fixed;inset:0;z-index:9998;pointer-events:none;background:#102b36;opacity:0;transition:opacity .2s ease-in-out}
+/* Colour veil behind cross-document transitions; the page itself fades in motion.css. */
+html::before{content:"";position:fixed;inset:0;z-index:9998;pointer-events:none;background:radial-gradient(circle at 50% 38%,#16323c,#0a1d28 72%);opacity:0;transition:opacity .24s cubic-bezier(.22,.61,.36,1)}
 html.bio-leaving::before,html.bio-arriving::before{opacity:1}
 @media(prefers-reduced-motion:reduce){html::before{display:none}}

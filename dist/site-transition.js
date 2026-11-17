@@ -1,8 +1,12 @@
+/* Cross-document transition: fade the outgoing main out and up, then let the
+   arriving page fade its main in. The colour veil in site-transition.css covers
+   the gap so the switch never flashes white. */
 (() => {
   if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
   const root = document.documentElement;
   const transitionKey = 'biolens.transition.destination';
+  const main = () => document.querySelector('main');
   let destination = null;
   try {
     destination = sessionStorage.getItem(transitionKey);
@@ -11,7 +15,13 @@
 
   if (destination === location.pathname) {
     root.classList.add('bio-arriving');
-    const reveal = () => requestAnimationFrame(() => requestAnimationFrame(() => root.classList.remove('bio-arriving')));
+    const reveal = () => requestAnimationFrame(() => {
+      root.classList.remove('bio-arriving');
+      const el = main();
+      if (!el) return;
+      el.classList.add('page-enter');
+      requestAnimationFrame(() => requestAnimationFrame(() => el.classList.remove('page-enter')));
+    });
     if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', reveal, { once: true });
     else reveal();
   }
@@ -25,10 +35,15 @@
     event.preventDefault();
     try { sessionStorage.setItem(transitionKey, next.pathname); } catch (_) {}
     root.classList.add('bio-leaving');
-    setTimeout(() => { location.href = next.href; }, 200);
+    const el = main();
+    if (el) el.classList.add('page-leave');
+    setTimeout(() => { location.href = next.href; }, 180);
   });
 
   addEventListener('pageshow', event => {
-    if (event.persisted) root.classList.remove('bio-leaving', 'bio-arriving');
+    if (!event.persisted) return;
+    root.classList.remove('bio-leaving', 'bio-arriving');
+    const el = main();
+    if (el) el.classList.remove('page-leave', 'page-enter');
   });
 })();
