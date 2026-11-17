@@ -1,0 +1,9 @@
+.bio-language {display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.bio-language button {font:inherit;font-size:14px;min-height:44px;padding:8px 12px;border:1px solid #697b86;border-radius:8px;background:transparent;color:inherit;cursor:pointer}
+.bio-language button[aria-pressed="true"] {background:#163f43;color:#fff;border-color:#163f43}
+.bio-language button:focus-visible {outline:3px solid #bb8753;outline-offset:3px}
+.bio-language-note {font-size:14px;line-height:1.6;margin:16px 0;color:inherit}
+#languageScope {padding:0 max(18px,5vw)}
+html[lang="en"] .bio-shell-tagline {display:none}
+html[lang="en"] .routes h3,html[lang="en"] .topics h3 {overflow-wrap:break-word}
+@media(max-width:600px){.bio-shell{flex-wrap:wrap}.bio-language{width:100%}}

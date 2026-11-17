@@ -1,0 +1,37 @@
+(() => {
+const copy = {
+'BioLens · 从细胞看见生命活动':'BioLens · Explore life through the cell',
+'以交互模型连接细胞结构、物质运输、遗传信息、能量转换与细胞分裂。':'Connect cell structure, transport, genetic information, energy conversion, and cell division through interactive models.',
+'课程位置':'Learning context', '细胞生命活动 · 交互学习网站':'Cellular life · Interactive learning',
+'查看完整课程地图':'Explore the learning map','生物，看得见':'See biology in action','学习单元':'Learning units',
+'学习首页':'Learning home','细胞世界':'The cell','DNA 复制':'DNA replication','线粒体':'Mitochondria','ATP 合成':'ATP synthesis','细胞膜':'Cell membrane','被动运输':'Passive transport','细胞分裂':'Cell division',
+'从一座细胞出发，':'Start with one cell.', '看见生命活动如何相连。':'Discover how its processes connect.',
+'走进一个细胞，观察物质怎样穿过膜、DNA 怎样复制与分配，以及能量怎样参与生命活动。亲手操作模型，把看到的变化连成自己的理解。':'Step inside a cell. Explore how substances cross membranes, how DNA is copied and distributed, and how energy supports life. Use the models to build your own understanding.',
+'开始 4 分钟探索':'Start a four-minute exploration','浏览完整课程地图':'Browse the learning map',
+'细胞生命活动关系示意：细胞核、细胞膜与线粒体彼此联系':'Connections within a cell: the nucleus, cell membrane, and mitochondria',
+'膜':'Membrane','分裂':'Division','同一个细胞 · 不同尺度 · 相互联系':'One cell · Different scales · Connected processes',
+'第一次来？跟着走一遍':'NEW HERE? START WITH THIS ROUTE','用四分钟，发现细胞里的联系。':'Discover connections in four minutes.',
+'7 个可体验单元 · 3 条关联路线':'7 interactive units · 3 connected routes',
+'看看细胞里有什么':'Explore what is inside a cell','约 40 秒 · 转动模型，找出细胞膜与细胞核':'About 40 seconds · Rotate the model and find the membrane and nucleus',
+'放大细胞膜':'Zoom in on the membrane','约 35 秒 · 观察分子将经过的边界':'About 35 seconds · Explore the boundary molecules must cross',
+'预测并验证被动运输':'Predict and investigate passive transport','约 2 分钟 · 比较预测与实验结果':'About 2 minutes · Compare your prediction with the model’s results',
+'追踪遗传信息的分配':'Follow the distribution of genetic information','约 45 秒 · 看见复制后的染色体如何分开':'About 45 seconds · Watch copied chromosomes separate',
+'沿着问题学习':'FOLLOW A QUESTION','从一个问题，走向下一段发现。':'Let one question lead to another.',
+'查看完整课程地图 →':'Explore the learning map →','物质与能量':'Matter and energy',
+'膜两侧的差异，怎样参与细胞工作？':'How do differences across a membrane help a cell function?',
+'膜结构':'Membrane structure','信息保存与分配':'Copying and sharing information',
+'一份遗传信息，怎样交给两个子细胞？':'How do two daughter cells inherit genetic information?',
+'信息表达与运输':'Expression and transport','基因的信息，怎样成为分泌蛋白？':'How does genetic information become a secreted protein?',
+'转录与翻译 · 规划中':'Transcription and translation · Planned','分泌蛋白旅程':'A secreted protein’s journey',
+'当前课程库':'CURRENT LEARNING UNITS','选择一个尺度，开始探索。':'Choose a scale and start exploring.',
+'绿色标记均可直接体验':'Green labels mark interactive units','可体验':'Available','结构与协作':'Structure and cooperation',
+'双层与膜蛋白':'Bilayer and membrane proteins','核心实验':'Core investigation','预测、实验与解释':'Predict, investigate, explain',
+'复制叉与酶':'Replication forks and enzymes','复制后的分配':'Distribution after replication','结构支持功能':'Structure supports function',
+'梯度与能量':'Gradients and energy','后续路线':'Future route','RNA 转录与翻译':'RNA transcription and translation',
+'接口保留 · 尚无独立课程':'Planned · No standalone lesson yet',
+'当前以真核细胞教学情境为主。所有模型均为概念示意，并明确标注范围与限制。':'Lessons currently focus on eukaryotic cells. All models illustrate concepts and include statements of scope and limitations.',
+'课程地图与科学联系':'Learning map and scientific connections','选择语言':'Choose a language',
+'首页和课程地图已支持中英文；其他学习单元目前仍为中文。':'The home page and learning map are bilingual. The learning units currently remain in Chinese.'
+};
+for(const root of [document.head,document.querySelector('.site-context'),document.querySelector('header'),document.querySelector('#homeMain'),document.querySelector('#languageScope')]) BioI18n.register(root,copy);
+})();

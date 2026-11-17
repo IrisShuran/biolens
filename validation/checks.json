@@ -1,0 +1,85 @@
+{
+  "results": [
+    {
+      "name": "explicit English and fragment",
+      "pass": true
+    },
+    {
+      "name": "no untranslated Chinese text except language control",
+      "pass": true
+    },
+    {
+      "name": "English 1440: no horizontal overflow",
+      "pass": true
+    },
+    {
+      "name": "English 1024: no horizontal overflow",
+      "pass": true
+    },
+    {
+      "name": "English 768: no horizontal overflow",
+      "pass": true
+    },
+    {
+      "name": "English 390: no horizontal overflow",
+      "pass": true
+    },
+    {
+      "name": "Chinese restored, query and hash retained",
+      "pass": true
+    },
+    {
+      "name": "saved preference applied",
+      "pass": true
+    },
+    {
+      "name": "URL overrides preference",
+      "pass": true
+    },
+    {
+      "name": "English preference survives navigation without query",
+      "pass": true
+    },
+    {
+      "name": "in-page link retains language",
+      "pass": true
+    },
+    {
+      "name": "cross-page destination retains language",
+      "pass": true
+    },
+    {
+      "name": "home translated",
+      "pass": true
+    },
+    {
+      "name": "Home English 1440: no horizontal overflow",
+      "pass": true
+    },
+    {
+      "name": "Home English 1024: no horizontal overflow",
+      "pass": true
+    },
+    {
+      "name": "Home English 768: no horizontal overflow",
+      "pass": true
+    },
+    {
+      "name": "Home English 390: no horizontal overflow",
+      "pass": true
+    },
+    {
+      "name": "world navigation retains query",
+      "pass": true
+    },
+    {
+      "name": "home restores Chinese",
+      "pass": true
+    },
+    {
+      "name": "no runtime exceptions",
+      "pass": true
+    }
+  ],
+  "errors": []
+}

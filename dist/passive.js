@@ -1027,12 +1027,12 @@
     ctx.textAlign = 'center';
     ctx.fillStyle = '#a9c8d5';
     ctx.font = '600 14px Inter, "Segoe UI", "Microsoft YaHei", sans-serif';
-    ctx.fillText('左侧', leftEdge + leftPanelWidth / 2, 22);
-    ctx.fillText('右侧', rightPanelX + rightPanelWidth / 2, 22);
+    ctx.fillText(BioI18n.t('左侧'), leftEdge + leftPanelWidth / 2, 22);
+    ctx.fillText(BioI18n.t('右侧'), rightPanelX + rightPanelWidth / 2, 22);
     ctx.fillStyle = '#8ef0df';
     ctx.font = '700 24px Inter, "Segoe UI", "Microsoft YaHei", sans-serif';
-    ctx.fillText(String(counts.left), leftEdge + leftPanelWidth / 2, 50);
-    ctx.fillText(String(counts.right), rightPanelX + rightPanelWidth / 2, 50);
+    ctx.fillText(BioI18n.t(String(counts.left)), leftEdge + leftPanelWidth / 2, 50);
+    ctx.fillText(BioI18n.t(String(counts.right)), rightPanelX + rightPanelWidth / 2, 50);
 
     roundedPath(ctx, mid - 34, 11, 68, 24, 12);
     ctx.fillStyle = 'rgba(12, 32, 45, 0.95)';
@@ -1041,7 +1041,7 @@
     ctx.stroke();
     ctx.fillStyle = '#bcd9d4';
     ctx.font = '600 14px Inter, "Segoe UI", "Microsoft YaHei", sans-serif';
-    ctx.fillText('细胞膜', mid, 28);
+    ctx.fillText(BioI18n.t('细胞膜'), mid, 28);
 
     drawMembrane(ctx, mid, membraneHalf, top - 10, bottom + 4);
     drawCarriers(ctx, sim, mid, gyToY);
@@ -1050,7 +1050,7 @@
     ctx.textAlign = 'center';
     ctx.fillStyle = '#89a6b4';
     ctx.font = '12px Inter, "Segoe UI", "Microsoft YaHei", sans-serif';
-    ctx.fillText('点 = 相对浓度 · 非真实比例', mid, height - 11);
+    ctx.fillText(BioI18n.t('点 = 相对浓度 · 非真实比例'), mid, height - 11);
     ctx.restore();
   }
 
@@ -1124,7 +1124,7 @@
         const text = labels[carrier.phase] || '运输';
         context.save();
         context.font = '600 14px Inter, "Segoe UI", "Microsoft YaHei", sans-serif';
-        const textWidth = context.measureText(text).width;
+        const textWidth = context.measureText(BioI18n.t(text)).width;
         const labelGap = 34;
         const labelX = mid + (openLeft ? -labelGap - textWidth : labelGap);
         roundedPath(context, labelX - 7, y - 12, textWidth + 14, 24, 7);
@@ -1135,7 +1135,7 @@
         context.stroke();
         context.fillStyle = '#ffd8a2';
         context.textAlign = 'left';
-        context.fillText(text, labelX, y + 5);
+        context.fillText(BioI18n.t(text), labelX, y + 5);
         context.restore();
       }
     }
@@ -1364,6 +1364,7 @@
     scheduleFrame();
   }
 
+  BioI18n.subscribe(drawScene);
   exposeDebugApi();
   initialize();
 })();

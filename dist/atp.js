@@ -69,7 +69,7 @@ function text(s, x, y, o = {}) {
   ctx.fillStyle = o.color || C.text;
   ctx.textAlign = o.align || 'left';
   ctx.textBaseline = o.baseline || 'middle';
-  ctx.fillText(s, x, y);
+  ctx.fillText(BioI18n.t(s), x, y);
 }
 
 // 窄屏时用更短的同义标注，避免放大后的文字互相压住。
@@ -833,3 +833,5 @@ function degrade(e) {
   ['atpPlay', 'atpReplay', 'atpResetView'].forEach(id => { const el = $(id); if (el) el.disabled = true; });
   console.error('ATP canvas failed', e);
 }
+
+BioI18n.subscribe(paint);

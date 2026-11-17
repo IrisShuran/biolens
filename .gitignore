@@ -1,0 +1,5 @@
+qa/
+node_modules/
+COPY_CATALOG.json
+CONTENT_CANDIDATES.json
+*.log
