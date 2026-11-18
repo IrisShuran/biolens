@@ -1,0 +1,28 @@
+/* English display type: Georgia for running text, Sitka Banner for headings.
+   Chinese glyphs are not in these faces, so they fall back to Microsoft YaHei. */
+:root{
+  --type-text:Georgia,"Palatino Linotype","Book Antiqua","Microsoft YaHei","PingFang SC",serif;
+  --type-display:"Sitka Banner","Sitka Text",Georgia,"Microsoft YaHei","PingFang SC",serif;
+}
+html,body{font-family:var(--type-text)}
+body{font-kerning:normal;text-rendering:optimizeLegibility;-webkit-font-smoothing:antialiased}
+h1,h2,h3,h4,h5,h6,
+.brand,.bio-shell-brand,
+.home-hero h1,.intro h1,.heading h1,
+.concept h2,.course-path button,.course-context,
+.lesson-head h2,.lesson-copy h3,
+.quiz h2,.steps+* h2{
+  font-family:var(--type-display);
+  letter-spacing:0;
+}
+h1,h2{font-weight:600}
+h3,h4{font-weight:600}
+/* Shell and cards set their own sans stack; keep them on the same text face. */
+.bio-shell,.bio-shell-actions a,.bio-shell-actions button,.bio-related,.bio-trail,
+.home-lead,.home-section-heading,.home-demo-track a,.home-module-grid>a{
+  font-family:var(--type-text);
+}
+/* Controls inherit the text face instead of the browser default. */
+button,input,select,textarea{font-family:inherit}
+/* Serif numerals sit low by default; keep data readouts on lining figures where supported. */
+output,.passive-count-card strong,.passive-stat-block dd{font-family:"Cascadia Mono",Consolas,"SFMono-Regular",monospace}

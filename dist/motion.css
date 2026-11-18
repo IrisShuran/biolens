@@ -1,0 +1,46 @@
+/* Motion system: nav indicator (L1), world switching (L2), page transitions (L3).
+   Only transform and opacity animate; timings come from the tokens below. */
+:root{
+  --m-fast:140ms;
+  --m-base:180ms;
+  --m-slow:220ms;
+  --m-ease:cubic-bezier(.22,.61,.36,1);
+  --m-ease-in:cubic-bezier(.4,0,.9,.3);
+  --m-lift:8px;
+  --m-fade:.92;
+  --m-color:#378d7f;
+}
+
+/* L1 — navigation indicator */
+.world-nav{position:relative}
+.world-nav button,.world-nav a{transition:color var(--m-fast) var(--m-ease)}
+.world-nav button[aria-pressed=true]{border-bottom-color:var(--m-color)}
+.world-nav.has-indicator button[aria-pressed=true]{border-bottom-color:transparent}
+.nav-indicator,.nav-indicator-preview{
+  position:absolute;left:0;bottom:0;width:100px;height:2px;
+  background:var(--m-color);transform-origin:0 50%;pointer-events:none;
+  -webkit-mask-image:linear-gradient(90deg,transparent,#000 16%,#000 84%,transparent);
+  mask-image:linear-gradient(90deg,transparent,#000 16%,#000 84%,transparent);
+  transition:transform var(--m-fast) var(--m-ease),opacity var(--m-fast) linear;
+}
+.nav-indicator{transition-duration:var(--m-base),var(--m-fast)}
+.nav-indicator-preview{opacity:0}
+.nav-indicator-preview.is-on{opacity:.5}
+.world-nav:not(.has-indicator) .nav-indicator,
+.world-nav:not(.has-indicator) .nav-indicator-preview{display:none}
+.world-nav.no-anim .nav-indicator,.world-nav.no-anim .nav-indicator-preview{transition:none}
+
+/* L2 — world switching */
+.world-view{transition:opacity var(--m-base) var(--m-ease),transform var(--m-base) var(--m-ease)}
+.world-view.m-leave{opacity:0;transform:translate3d(0,calc(var(--m-lift) * -1),0);pointer-events:none}
+.world-view.m-enter{opacity:var(--m-fade);transform:translate3d(0,var(--m-lift),0)}
+
+/* L3 — page transitions */
+main{transition:opacity var(--m-slow) var(--m-ease),transform var(--m-slow) var(--m-ease)}
+main.page-leave{opacity:.9;transform:translate3d(0,calc(var(--m-lift) * -1),0);transition-duration:var(--m-base);transition-timing-function:var(--m-ease-in)}
+main.page-enter{opacity:var(--m-fade);transform:translate3d(0,var(--m-lift),0);transition-duration:var(--m-slow)}
+
+@media (prefers-reduced-motion:reduce){
+  .nav-indicator,.nav-indicator-preview,.world-view,main{transition-duration:80ms!important}
+  .world-view.m-leave,.world-view.m-enter,main.page-leave,main.page-enter{transform:none!important}
+}
