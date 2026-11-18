@@ -26,6 +26,8 @@
 .nav-indicator{transition-duration:var(--m-base),var(--m-fast)}
 .nav-indicator-preview{opacity:0}
 .nav-indicator-preview.is-on{opacity:.5}
+.world-nav:not(.has-indicator) .nav-indicator,
+.world-nav:not(.has-indicator) .nav-indicator-preview{display:none}
 .world-nav.no-anim .nav-indicator,.world-nav.no-anim .nav-indicator-preview{transition:none}
 
 /* L2 — world switching */
